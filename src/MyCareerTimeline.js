@@ -5,6 +5,7 @@ import TimelineDot from '@mui/lab/TimelineDot';
 import TimelineItem from '@mui/lab/TimelineItem';
 import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent';
 import TimelineSeparator from '@mui/lab/TimelineSeparator';
+import { Container } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import * as React from 'react';
 
@@ -42,7 +43,7 @@ const DipsystemTimelineIcon = ({ width = '32px' }) => {
 
 const MyCareerTimeline = () => {
   return (
-    <div style={{ textAlign: 'center' }}>
+    <Container style={{ textAlign: 'center' }}>
       <h1 id="my-career">My Career</h1>
       <Timeline position="alternate">
 
@@ -311,7 +312,7 @@ const MyCareerTimeline = () => {
         </TimelineItem>
 
       </Timeline>
-    </div>
+    </Container>
   );
 }
 

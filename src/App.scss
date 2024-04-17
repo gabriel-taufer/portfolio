@@ -8,6 +8,10 @@
   flex-direction: column;
   align-items: center;
 
+  #main, #contact, #my-career {
+    scroll-margin-top: 72px;
+  }
+
   .content {
     max-width: 1200px;
   }
@@ -35,14 +39,16 @@
     }
   }
 
-  #about {
+  #home {
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 64px;
 
     img {
-      max-height: 280px;
-      max-width: 280px;
+      max-height: 328px;
+      max-width: 328px;
+      object-fit: cover;
     }
 
     .about-me-text {
@@ -94,12 +100,23 @@
       font-size: 18px;
       color: white;
       margin: 5px;
+      transition: all 300ms;
       
       &:hover {
         cursor: pointer;
         color: lightgray;
         transition: all 300ms;
+        
+        &.instagram-icon {
+          color: #C13584;
+        }
+
+        &.linkedin-icon {
+          color: #0a66c2;
+        }
+        
       }
     }
+
   }
 }

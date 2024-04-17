@@ -46,11 +46,11 @@ const NavBar = () => {
           <a className="link" href="#">
             Home
           </a>
-          <a className="link" href="#my-career">
-            My Career
-          </a>
           <a className="link" href="#contact">
             Contact
+          </a>
+          <a className="link" href="#my-career">
+            Career
           </a>
         </Box>
       </Toolbar>
@@ -60,7 +60,7 @@ const NavBar = () => {
 
 const About = () => {
   return (
-    <Container id="about">
+    <Container id="home">
       <div className='about-me-text'>
         <h1>
           Hey, I'm Gabriel.
@@ -76,14 +76,15 @@ const About = () => {
       </div>
       <div>
         <div className='image-container'>
-          {/* <img
+          {/* TODO: add professional picture */}
+          <img
             loading="lazy"
             decoding="async"
             width="640"
             height="640"
-            src=""
+            src="profile_pic.jpg"
             alt=""
-          /> */}
+          />
         </div>
       </div>
     </Container>
@@ -92,7 +93,7 @@ const About = () => {
 
 const Contact = () => {
   return (
-    <div style={{ textAlign: 'center' }}>
+    <Container style={{ textAlign: 'center' }}>
       <h1 id="contact">Let's chat</h1>
       <div className='about-me-text'>
         <h3>
@@ -103,21 +104,21 @@ const Contact = () => {
         </p>
         <SocialMediaIcons size="large" />
       </div>
-    </div>
+    </Container>
   )
 }
 
 const SocialMediaIcons = ({ size = "medium" }) => {
   return (
     <div className="social-media-icons">
-      <Link href="https://www.instagram.com/gabriel.taufer" target="_blank" rel="noreferrer">
-        <InstagramIcon fontSize={size} />
-      </Link>
-      <Link href="https://www.linkedin.com/in/gabriel-taufer-91ab561a0/" target="_blank" rel="noreferrer">
+      <Link href="https://www.linkedin.com/in/gabriel-taufer-91ab561a0/" target="_blank" rel="noreferrer" className="linkedin-icon">
         <LinkedInIcon fontSize={size} />
       </Link>
       <Link href="https://github.com/gabriel-taufer" target="_blank" rel="noreferrer">
         <GitHubIcon fontSize={size} />
+      </Link>
+      <Link href="https://www.instagram.com/gabriel.taufer" target="_blank" rel="noreferrer" className="instagram-icon">
+        <InstagramIcon fontSize={size} />
       </Link>
     </div>
   )
