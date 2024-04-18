@@ -1,3 +1,4 @@
+import * as React from 'react';
 import Timeline from '@mui/lab/Timeline';
 import TimelineConnector from '@mui/lab/TimelineConnector';
 import TimelineContent from '@mui/lab/TimelineContent';
@@ -7,7 +8,8 @@ import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent';
 import TimelineSeparator from '@mui/lab/TimelineSeparator';
 import { Container } from '@mui/material';
 import Typography from '@mui/material/Typography';
-import * as React from 'react';
+import { isMobile } from 'react-device-detect';
+
 
 const LumenaltaTimelineIcon = ({ width = '32px' }) => {
   return (
@@ -41,76 +43,113 @@ const DipsystemTimelineIcon = ({ width = '32px' }) => {
   )
 }
 
-const MyCareerTimeline = () => {
-  return (
-    <Container style={{ textAlign: 'center' }}>
-      <h1 id="my-career">My Career</h1>
-      <Timeline position="alternate">
 
-        {/* Lumenalta - main */}
-        <TimelineItem>
+const MainCompanyTimelineItem = ({
+  companyName,
+  CompanyIconComponent,
+  PeriodChildren
+}) => {
+  return (
+    <TimelineItem>
+      {
+        !isMobile ? (
           <TimelineOppositeContent
             sx={{ m: 'auto 0' }}
             align="right"
             variant="h5"
             fontWeight="bold"
           >
-            Lumenalta (formerly Clevertech)
+            {companyName}
           </TimelineOppositeContent>
-          <TimelineSeparator>
-            <TimelineConnector />
-            <TimelineDot color='inherit'>
-              <LumenaltaTimelineIcon width="48px" />
+        ) : <TimelineOppositeContent sx={{ display: 'none' }} />
+      }
+
+      <TimelineSeparator>
+        <TimelineDot color='inherit' >
+          <CompanyIconComponent width="48px" />
+        </TimelineDot>
+      </TimelineSeparator>
+      <TimelineContent sx={{ m: 'auto 0' }}>
+        {isMobile && (
+          <Typography variant="h5" fontWeight="bold">
+            {companyName}
+          </Typography>
+        )}
+        <Typography fontSize={14}>
+          <PeriodChildren />
+        </Typography>
+      </TimelineContent>
+    </TimelineItem>
+  )
+}
+
+const CompanyRoleTimelineItem = ({
+  roleName,
+  CompanyIconComponent,
+  PeriodChildren,
+  DescriptionChildren,
+  position
+}) => {
+  return (
+    <TimelineItem position={position} sx={{ marginLeft: isMobile ? '27px' : 0 }}>
+      {isMobile && <TimelineOppositeContent style={{ display: 'none' }} />}
+      <TimelineSeparator>
+        <TimelineConnector />
+        {!isMobile && (
+          <>
+            <TimelineDot color='inherit' sx={{ m: 'auto 0' }}>
+              <CompanyIconComponent />
             </TimelineDot>
             <TimelineConnector />
-          </TimelineSeparator>
-          <TimelineContent sx={{ m: 'auto 0' }}>
-            <Typography fontSize={14}>
-              <i>September 2021 - <b>the moment</b></i>
-            </Typography>
-          </TimelineContent>
-        </TimelineItem>
+          </>
+        )}
+      </TimelineSeparator>
+      <TimelineContent sx={{ py: '12px', px: 2 }}>
+        <Typography variant="h6" component="span" fontWeight="bold" sx={{ marginRight: '5px' }}>
+          {roleName}
+        </Typography>
+        <PeriodChildren />
+        <DescriptionChildren />
+      </TimelineContent>
+    </TimelineItem>
+  )
+}
+
+const MyCareerTimeline = () => {
+  console.log({ isMobile })
+  return (
+    <Container style={{ textAlign: 'center' }}>
+      <h1 id="my-career">My Career</h1>
+      <Timeline position="right" sx={{ padding: 0 }}>
+
+        {/* Lumenalta - main */}
+        <MainCompanyTimelineItem
+          companyName="Lumenalta (formerly Clevertech)"
+          CompanyIconComponent={LumenaltaTimelineIcon}
+          PeriodChildren={() => <i>September 2021 - <b>the moment</b></i>}
+        />
 
         {/* Lumenalta - data engineer */}
-        <TimelineItem position='alternate-reverse'>
-          <TimelineSeparator>
-            <TimelineConnector />
-            <TimelineDot color='inherit'>
-              <LumenaltaTimelineIcon />
-            </TimelineDot>
-            <TimelineConnector />
-          </TimelineSeparator>
-          <TimelineContent sx={{ py: '12px', px: 2 }}>
-            <Typography variant="h6" component="span" fontWeight="bold" sx={{ marginRight: '5px' }}>
-              Data engineer
-            </Typography>
-            <i>
-              <small>July 2022 - <b>the moment</b></small>
-            </i>
+        <CompanyRoleTimelineItem
+          roleName="Data engineer"
+          DescriptionChildren={() => (
             <Typography fontSize={14}>
-              <p style={{ margin: '0' }}>Maintaining and building ETL pipelines using Airflow, PostgreSQL, Databricks, Snowflake, AWS Redshift, AWS S3, AWS Lambda, and others.</p>
+              <p style={{ margin: '0' }}>Maintaining and building ETL pipelines using Airflow, PostgreSQL, Databricks, Snowflake, AWS Redshift, AWS S3, AWS Lambda, and other AWS tools.</p>
               <p style={{ margin: '0' }}>Refactored nearly the entire project codebase, resulting in substantial improvements.</p>
-              <p style={{ margin: '0' }}>Reduced database utilization by up to 50% and dramatically accelerated crucial data pipelines.</p>
+              <p style={{ margin: '0' }}>Reduced database storage utilization by up to 50% and dramatically accelerated crucial data pipelines.</p>
               <p style={{ margin: '0' }}>Streamlined operations by automating and optimizing manual tasks such as email dispatch and report generation.</p>
               <p style={{ margin: '0' }}>Centralized the client's ETL architecture, consolidating dispersed processes into a single, easily managed framework.</p>
             </Typography>
-          </TimelineContent>
-        </TimelineItem>
+          )}
+          PeriodChildren={() => <i><small>July 2022 - <b>the moment</b></small></i>}
+          CompanyIconComponent={LumenaltaTimelineIcon}
+          position="'alternate-reverse'"
+        />
 
         {/* Lumenalta - python developer */}
-        <TimelineItem position='alternate'>
-          <TimelineSeparator>
-            <TimelineConnector />
-            <TimelineDot color='inherit'>
-              <LumenaltaTimelineIcon />
-            </TimelineDot>
-            <TimelineConnector />
-          </TimelineSeparator>
-          <TimelineContent sx={{ py: '12px', px: 2 }}>
-            <Typography variant="h6" component="span" fontWeight="bold" sx={{ marginRight: '5px' }}>
-              Python developer
-            </Typography>
-            <i><small>February 2022 - July 2022</small></i>
+        <CompanyRoleTimelineItem
+          roleName="Python developer"
+          DescriptionChildren={() => (
             <Typography fontSize={14}>
               <p style={{ margin: '0' }}>
                 Development of serverless applications using Chalice, Terraform, and other AWS technologies (SNS, SES, and DynamoDB).
@@ -119,26 +158,19 @@ const MyCareerTimeline = () => {
                 Reverse engineering on web SAAS applications.
               </p>
               <p style={{ margin: '0' }}>
-                Integrating new partners in the client platform.
+                Integrating new partners into the client platform.
               </p>
             </Typography>
-          </TimelineContent>
-        </TimelineItem>
+          )}
+          PeriodChildren={() => <i><small>February 2022 - July 2022</small></i>}
+          CompanyIconComponent={LumenaltaTimelineIcon}
+          position='alternate'
+        />
 
         {/* Lumenalta - javascript fullstack developer */}
-        <TimelineItem position='alternate-reverse'>
-          <TimelineSeparator>
-            <TimelineConnector />
-            <TimelineDot color='inherit'>
-              <LumenaltaTimelineIcon />
-            </TimelineDot>
-            <TimelineConnector />
-          </TimelineSeparator>
-          <TimelineContent sx={{ py: '12px', px: 2 }}>
-            <Typography variant="h6" component="span" fontWeight="bold" sx={{ marginRight: '5px' }}>
-              JavaScript fullstack developer
-            </Typography>
-            <i><small>September 2021 - February 2022</small></i>
+        <CompanyRoleTimelineItem
+          roleName="JavaScript fullstack developer"
+          DescriptionChildren={() => (
             <Typography fontSize={14}>
               <p style={{ margin: '0' }}>
                 Development of web applications using NodeJS, ReactJS and MongoDB.
@@ -147,169 +179,94 @@ const MyCareerTimeline = () => {
                 Brief experience with adapting client software to conform with Web Accessibility Guidelines (WCAG/ADA).
               </p>
             </Typography>
-          </TimelineContent>
-        </TimelineItem>
+          )}
+          PeriodChildren={() => <i><small>September 2021 - February 2022</small></i>}
+          CompanyIconComponent={LumenaltaTimelineIcon}
+          position='alternate-reverse'
+        />
 
 
         {/* Concordia - main */}
-        <TimelineItem>
-          <TimelineOppositeContent
-            sx={{ m: 'auto 0' }}
-            align="right"
-            variant="h5"
-            fontWeight="bold"
-          >
-            Concordia Labs
-          </TimelineOppositeContent>
-          <TimelineSeparator>
-            <TimelineConnector />
-            <TimelineDot color='inherit'>
-              <ConcordiaTimelineIcon width="48px" />
-            </TimelineDot>
-            <TimelineConnector />
-          </TimelineSeparator>
-          <TimelineContent sx={{ m: 'auto 0' }}>
-            <Typography fontSize={14}>
-              <i>August 2020 - <b>the moment</b></i>
-            </Typography>
-          </TimelineContent>
-        </TimelineItem>
+        <MainCompanyTimelineItem
+          companyName="Concordia Labs"
+          CompanyIconComponent={ConcordiaTimelineIcon}
+          PeriodChildren={() => <i>August 2020 - <b>the moment</b></i>}
+        />
 
         {/* Concordia - fullstack developer */}
-        <TimelineItem position='alternate-reverse'>
-          <TimelineSeparator>
-            <TimelineConnector />
-            <TimelineDot color='inherit'>
-              <ConcordiaTimelineIcon />
-            </TimelineDot>
-            <TimelineConnector />
-          </TimelineSeparator>
-          <TimelineContent sx={{ py: '12px', px: 2 }}>
-            <Typography variant="h6" component="span" fontWeight="bold" sx={{ marginRight: '5px' }}>
-              Fullstack developer
-            </Typography>
-            {/* <i><small>August 2020 - <b>the moment</b></small></i> */}
+        <CompanyRoleTimelineItem
+          roleName="Fullstack developer"
+          DescriptionChildren={() => (
             <Typography fontSize={14}>
               <p style={{ margin: '0' }}>Built web apps using Django (Python), HTML, CSS, JavaScript, and TypeScript, and also dabbled in ReactJS, NodeJS, Angular, and NestJS.</p>
               <p style={{ margin: '0' }}>Had a hand in making hybrid mobile apps with ReactNative and Ionic Cordova.</p>
               <p style={{ margin: '0' }}>Recreated a legacy platform by moving it to the web with newer tech, making it more user-friendly.</p>
               <p style={{ margin: '0' }}>Got good at moving data between different systems and formats for clients.</p>
             </Typography>
-          </TimelineContent>
-        </TimelineItem>
+          )}
+          PeriodChildren={() => { }}
+          CompanyIconComponent={ConcordiaTimelineIcon}
+          position='alternate-reverse'
+        />
 
 
         {/* Develcode - main */}
-        <TimelineItem>
-          <TimelineOppositeContent
-            sx={{ m: 'auto 0' }}
-            align="right"
-            variant="h5"
-            fontWeight="bold"
-          >
-            Develcode
-          </TimelineOppositeContent>
-          <TimelineSeparator>
-            <TimelineConnector />
-            <TimelineDot color='inherit'>
-              <DevelcodeTimelineIcon width="48px" />
-            </TimelineDot>
-            <TimelineConnector />
-          </TimelineSeparator>
-          <TimelineContent sx={{ m: 'auto 0' }}>
-            <Typography fontSize={14}>
-              <i>January 2021 - September 2021 </i>
-            </Typography>
-          </TimelineContent>
-        </TimelineItem>
+        <MainCompanyTimelineItem
+          companyName="Develcode"
+          CompanyIconComponent={DevelcodeTimelineIcon}
+          PeriodChildren={() => <i>January 2021 - September 2021 </i>}
+        />
 
         {/* Develcode - tech lead */}
-        <TimelineItem position='alternate-reverse'>
-          <TimelineSeparator>
-            <TimelineConnector />
-            <TimelineDot color='inherit'>
-              <DevelcodeTimelineIcon />
-            </TimelineDot>
-            <TimelineConnector />
-          </TimelineSeparator>
-          <TimelineContent sx={{ py: '12px', px: 2 }}>
-            <Typography variant="h6" component="span" fontWeight="bold" sx={{ marginRight: '5px' }}>
-              Tech Lead
-            </Typography>
-            <i><small>July 2021 - September 2021</small></i>
+        <CompanyRoleTimelineItem
+          roleName="Tech lead"
+          DescriptionChildren={() => (
             <Typography fontSize={14}>
               <p style={{ margin: '0' }}> Technical leader of a project integration development using SpringBoot and ReactJS.</p>
             </Typography>
-          </TimelineContent>
-        </TimelineItem>
+          )}
+          PeriodChildren={() => <i><small>July 2021 - September 2021</small></i>}
+          CompanyIconComponent={DevelcodeTimelineIcon}
+          position='alternate-reverse'
+        />
 
         {/* Develcode - fullstack developer */}
-        <TimelineItem position='alternate'>
-          <TimelineSeparator>
-            <TimelineConnector />
-            <TimelineDot color='inherit'>
-              <DevelcodeTimelineIcon />
-            </TimelineDot>
-            <TimelineConnector />
-          </TimelineSeparator>
-          <TimelineContent sx={{ py: '12px', px: 2 }}>
-            <Typography variant="h6" component="span" fontWeight="bold" sx={{ marginRight: '5px' }}>
-              Fullstack developer
-            </Typography>
-            <i><small>January 2021 - July 2021</small></i>
+        <CompanyRoleTimelineItem
+          roleName="Tech lead"
+          DescriptionChildren={() => (
             <Typography fontSize={14}>
               <p style={{ margin: '0' }}> Created frontend applications with JavaScript and TypeScript (ReactJS), utilizing HTML and CSS3.</p>
               <p style={{ margin: '0' }}> Developed backend applications using Java (SpringBoot), along with managing databases in PostgreSQL and MySQL.</p>
               <p style={{ margin: '0' }}> Conducted maintenance tasks on a native Android mobile app.</p>
             </Typography>
-          </TimelineContent>
-        </TimelineItem>
+          )}
+          PeriodChildren={() => <i><small>January 2021 - July 2021</small></i>}
+          CompanyIconComponent={DevelcodeTimelineIcon}
+          position='alternate'
+        />
 
 
         {/* Dipsystem - main */}
-        <TimelineItem position='alternate-reverse'>
-          <TimelineOppositeContent
-            sx={{ m: 'auto 0' }}
-            align="right"
-            variant="h5"
-            fontWeight="bold"
-          >
-            Hapolo (DipSystem)
-          </TimelineOppositeContent>
-          <TimelineSeparator>
-            <TimelineConnector />
-            <TimelineDot color='inherit'>
-              <DipsystemTimelineIcon width="48px" />
-            </TimelineDot>
-            <TimelineConnector />
-          </TimelineSeparator>
-          <TimelineContent sx={{ m: 'auto 0' }}>
-            <Typography fontSize={14}>
-              <i>March 2018 - January 2021</i>
-            </Typography>
-          </TimelineContent>
-        </TimelineItem>
+        <MainCompanyTimelineItem
+          companyName="Hapolo (DipSystem)"
+          CompanyIconComponent={DipsystemTimelineIcon}
+          PeriodChildren={() => <i>March 2018 - January 2021</i>}
+        />
+
 
         {/* Dipsystem - fullstack developer */}
-        <TimelineItem>
-          <TimelineSeparator>
-            <TimelineConnector />
-            <TimelineDot color='inherit'>
-              <DipsystemTimelineIcon />
-            </TimelineDot>
-            <TimelineConnector />
-          </TimelineSeparator>
-          <TimelineContent sx={{ py: '12px', px: 2 }}>
-            <Typography variant="h6" component="span" fontWeight="bold" sx={{ marginRight: '5px' }}>
-              Fullstack developer
-            </Typography>
-            {/* <i><small>August 2020 - <b>the moment</b></small></i> */}
+        <CompanyRoleTimelineItem
+          roleName="Fullstack developer"
+          DescriptionChildren={() => (
             <Typography fontSize={14}>
               <p style={{ margin: '0' }}>Helped to port a legacy tracking system to a new version written from scratch and using newer technology.</p>
               <p style={{ margin: '0' }}>Worked on web applications using HTML, CSS3, JavaScript and TypeScript, NodeJS, Python (Django, Tornado), MySQL, Angular and MongoDB.</p>
             </Typography>
-          </TimelineContent>
-        </TimelineItem>
+          )}
+          PeriodChildren={() => <i><small>January 2021 - July 2021</small></i>}
+          CompanyIconComponent={DipsystemTimelineIcon}
+          position='alternate'
+        />
 
       </Timeline>
     </Container>

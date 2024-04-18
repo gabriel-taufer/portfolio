@@ -46,11 +46,11 @@ const NavBar = () => {
           <a className="link" href="#">
             Home
           </a>
-          <a className="link" href="#contact">
-            Contact
-          </a>
           <a className="link" href="#my-career">
             Career
+          </a>
+          <a className="link" href="#contact">
+            Contact
           </a>
         </Box>
       </Toolbar>
@@ -70,7 +70,7 @@ const About = () => {
         </h3>
         <p>
           I'm a dedicated data engineer and consultant who can help you achieve your company goals.
-          <br />While have extensive experience with both frontend and backend solutions - by building fullstack web applications - I repeatedly found myself drawn to the intricacies of backend development.
+          <br />While having extensive experience with both frontend and backend solutions - by building fullstack web applications - I repeatedly found myself drawn to the intricacies of backend development.
           <br />My biggest tech passion is working with data - extracting, transforming, and harnessing its potential from many different sources to create meaningful value.
         </p>
       </div>
@@ -133,7 +133,9 @@ const Divider = () => {
 const Footer = () => {
   return (
     <footer id="footer">
-      <SocialMediaIcons />
+      {/* <SocialMediaIcons /> */}
+      <br />
+      <br />
       <br />
       {/* <p id='copyright-text'>© All Rights Reserved.</p> */}
     </footer>
@@ -148,9 +150,9 @@ function App() {
           <NavBar />
           <About />
           <Divider />
-          <Contact />
-          <Divider />
           <MyCareerTimeline />
+          <Divider />
+          <Contact />
           <Footer />
         </div>
       </div>
