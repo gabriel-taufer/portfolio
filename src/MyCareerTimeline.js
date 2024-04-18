@@ -94,13 +94,13 @@ const CompanyRoleTimelineItem = ({
     <TimelineItem position={position} sx={{ marginLeft: isMobile ? '27px' : 0 }}>
       {isMobile && <TimelineOppositeContent style={{ display: 'none' }} />}
       <TimelineSeparator>
-        <TimelineConnector />
+        <TimelineConnector style={{backgroundColor: '#666666'}} />
         {!isMobile && (
           <>
             <TimelineDot color='inherit' sx={{ m: 'auto 0' }}>
               <CompanyIconComponent />
             </TimelineDot>
-            <TimelineConnector />
+            <TimelineConnector style={{backgroundColor: '#666666'}} />
           </>
         )}
       </TimelineSeparator>
@@ -118,7 +118,7 @@ const CompanyRoleTimelineItem = ({
 const MyCareerTimeline = () => {
   console.log({ isMobile })
   return (
-    <Container style={{ textAlign: 'center' }}>
+    <Container style={{ textAlign: 'center', marginBottom: '28px' }}>
       <h1 id="my-career">My Career</h1>
       <Timeline position="right" sx={{ padding: 0 }}>
 
@@ -186,30 +186,6 @@ const MyCareerTimeline = () => {
         />
 
 
-        {/* Concordia - main */}
-        <MainCompanyTimelineItem
-          companyName="Concordia Labs"
-          CompanyIconComponent={ConcordiaTimelineIcon}
-          PeriodChildren={() => <i>August 2020 - <b>the moment</b></i>}
-        />
-
-        {/* Concordia - fullstack developer */}
-        <CompanyRoleTimelineItem
-          roleName="Fullstack developer"
-          DescriptionChildren={() => (
-            <Typography fontSize={14}>
-              <p style={{ margin: '0' }}>Built web apps using Django (Python), HTML, CSS, JavaScript, and TypeScript, and also dabbled in ReactJS, NodeJS, Angular, and NestJS.</p>
-              <p style={{ margin: '0' }}>Had a hand in making hybrid mobile apps with ReactNative and Ionic Cordova.</p>
-              <p style={{ margin: '0' }}>Recreated a legacy platform by moving it to the web with newer tech, making it more user-friendly.</p>
-              <p style={{ margin: '0' }}>Got good at moving data between different systems and formats for clients.</p>
-            </Typography>
-          )}
-          PeriodChildren={() => { }}
-          CompanyIconComponent={ConcordiaTimelineIcon}
-          position='alternate-reverse'
-        />
-
-
         {/* Develcode - main */}
         <MainCompanyTimelineItem
           companyName="Develcode"
@@ -232,7 +208,7 @@ const MyCareerTimeline = () => {
 
         {/* Develcode - fullstack developer */}
         <CompanyRoleTimelineItem
-          roleName="Tech lead"
+          roleName="Fullstack developer"
           DescriptionChildren={() => (
             <Typography fontSize={14}>
               <p style={{ margin: '0' }}> Created frontend applications with JavaScript and TypeScript (ReactJS), utilizing HTML and CSS3.</p>
@@ -242,6 +218,30 @@ const MyCareerTimeline = () => {
           )}
           PeriodChildren={() => <i><small>January 2021 - July 2021</small></i>}
           CompanyIconComponent={DevelcodeTimelineIcon}
+          position='alternate'
+        />
+
+
+        {/* Concordia - main */}
+        <MainCompanyTimelineItem
+          companyName="Concordia Labs"
+          CompanyIconComponent={ConcordiaTimelineIcon}
+          PeriodChildren={() => <i>August 2020 - <b>the moment</b></i>}
+        />
+
+        {/* Concordia - fullstack developer */}
+        <CompanyRoleTimelineItem
+          roleName="Fullstack developer"
+          DescriptionChildren={() => (
+            <Typography fontSize={14}>
+              <p style={{ margin: '0' }}>Built web apps using Django (Python), HTML, CSS, JavaScript, and TypeScript, and also dabbled in ReactJS, NodeJS, Angular, and NestJS.</p>
+              <p style={{ margin: '0' }}>Had a hand in making hybrid mobile apps with ReactNative and Ionic Cordova.</p>
+              <p style={{ margin: '0' }}>Recreated a legacy platform by moving it to the web with newer tech, making it more user-friendly.</p>
+              <p style={{ margin: '0' }}>Got good at moving data between different systems and formats for clients.</p>
+            </Typography>
+          )}
+          PeriodChildren={() => { }}
+          CompanyIconComponent={ConcordiaTimelineIcon}
           position='alternate'
         />
 
@@ -263,7 +263,7 @@ const MyCareerTimeline = () => {
               <p style={{ margin: '0' }}>Worked on web applications using HTML, CSS3, JavaScript and TypeScript, NodeJS, Python (Django, Tornado), MySQL, Angular and MongoDB.</p>
             </Typography>
           )}
-          PeriodChildren={() => <i><small>January 2021 - July 2021</small></i>}
+          PeriodChildren={() => {}}
           CompanyIconComponent={DipsystemTimelineIcon}
           position='alternate'
         />

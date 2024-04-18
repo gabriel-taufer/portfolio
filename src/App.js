@@ -65,9 +65,9 @@ const About = () => {
         <h1>
           Hey, I'm Gabriel.
         </h1>
-        <h3>
+        <h2>
           And I love helping people through code.
-        </h3>
+        </h2>
         <p>
           I'm a dedicated data engineer and consultant who can help you achieve your company goals.
           <br />While having extensive experience with both frontend and backend solutions - by building fullstack web applications - I repeatedly found myself drawn to the intricacies of backend development.
@@ -126,7 +126,7 @@ const SocialMediaIcons = ({ size = "medium" }) => {
 
 const Divider = () => {
   return (
-    <div style={{ width: '50%', height: '1px', margin: '50px 0 50px 25%', backgroundColor: 'white' }}></div>
+    <div style={{ width: '50%', height: '2px', margin: '50px 0 50px 25%', backgroundColor: '#666666', borderRadius: '300px' }}></div>
   )
 }
 
