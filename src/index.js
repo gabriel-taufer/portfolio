@@ -4,6 +4,30 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import i18n from "i18next";
+import { initReactI18next } from "react-i18next";
+import translationEN from './locales/en/translation.json';
+import translationBR from './locales/br/translation.json';
+
+
+i18n
+  .use(initReactI18next) // passes i18n down to react-i18next
+  .init({
+    resources: {
+      en: {
+        translation: translationEN
+      },
+      br: {
+        translation: translationBR
+      },
+    },
+    lng: localStorage.getItem('page_language'),
+    fallbackLng: "en",
+    interpolation: {
+      escapeValue: false // react already safes from xss => https://www.i18next.com/translation-function/interpolation#unescape
+    }
+  });
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <App />

@@ -1,3 +1,5 @@
+@import "./Base.scss";
+
 h1 {
   font-size: 42px;
 }
@@ -6,135 +8,32 @@ p {
   font-size: 18px;
 }
 
-html {
-  scroll-behavior: smooth;
+img#language-toggle {
+  transition: all 200ms;
+
+  &:hover {
+    cursor: pointer;
+    filter: brightness(0.8);
+    transition: all 200ms;
+  }
+
+  @media only screen and (max-width: 768px) {
+    height: 48px;
+    width: 48px;
+  }
 }
 
-.main {
-  background-color: #000;
-  min-height: 100vh;
-  color: white;
-  
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  #main, #contact, #my-career {
-    scroll-margin-top: 72px;
+@media only screen and (max-width: 768px) {
+  .no-mobile {
+    display: none;
   }
 
-  .content {
-    max-width: 1200px;
+  .mobile {
+    display: block;
   }
 
-  #home {
-    margin-top: 28px;
-    margin-bottom: 28px;
-  }
-  
+  // Force navbar to be hidden, seems like we can't add a class to the MUI component?
   #navbar {
-    margin: 0 0 20px 0;
-
-    a.link, a.link:visited {
-      text-decoration: none;
-      color: white;
-      font-size: 18px;
-
-      &::after {
-        content: '';
-        width: 0px;
-        height: 1px;
-        display: block;
-        background: white;
-        transition: 250ms;
-      }
-      
-      &:hover::after, &.active::after {
-        width: 100%;
-      }
-    }
-  }
-
-  #home {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 64px;
-
-    img {
-      max-height: 328px;
-      max-width: 328px;
-      object-fit: cover;
-    }
-
-    .about-me-text {
-      display: inline;
-
-      h1, h2, h3, h4, h5 {
-        margin: 0;
-        padding: 0;
-      }
-    }
-
-    /* Small devices (portrait tablets and large phones, 600px and up) */
-    @media only screen and (max-width: 768px) {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      
-
-      img {
-        // display: none;
-        max-height: 280px;
-        max-width: 280px;
-      }
-
-      .about-me-text {
-        display: inline;
-
-        h1, h3 {
-          text-align: center;
-        }
-      }
-    }
-    // /* Medium devices (landscape tablets, 768px and up) */
-    // @media only screen and (min-width: 768px) {...}
-    // /* Extra large devices (large laptops and desktops, 1200px and up) */
-    // @media only screen and (min-width: 1200px) {...}
-  }
-  
-  footer{
-    margin-top: auto;
-    width: 100%;
-    text-align: center;
-  }
-
-  .social-media-icons {
-    margin: 16px;
-
-    a, a:visited {
-      text-decoration: none;
-      
-      color: white;
-      margin: 10px;
-      transition: all 300ms;
-      
-      &:hover {
-        cursor: pointer;
-        color: lightgray;
-        transition: all 300ms;
-        
-        &.instagram-icon {
-          color: #C13584;
-        }
-
-        &.linkedin-icon {
-          color: #0a66c2;
-        }
-        
-      }
-    }
-
+    display: none !important;
   }
 }
