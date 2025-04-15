@@ -16,11 +16,7 @@ const About = () => {
         <h2>
           {t("dramaticPhrase")}
         </h2>
-        <p>
-          {t("presentationParagraph1")}
-          <br />{t("presentationParagraph2")}
-          <br />{t("presentationParagraph3")}
-        </p>
+        <p dangerouslySetInnerHTML={{ __html: t("presentationParagraph") }} />
       </div>
       <div>
         <div className='image-container'>

@@ -27,7 +27,7 @@ const MyInfo = () => {
             Gabriel Taufer
           </h1>
           <h2>
-            {t('Data engineer and Fullstack developer')}
+            {t('Staff Engineer – Technical Leadership')}
           </h2>
           <Container style={{ display: 'flex', flexDirection: 'column', alignItems: 'start', padding: 0 }}>
             <Link href="https://maps.app.goo.gl/FMsKZo6RkKjHnyWQ8" target="_blank" rel="noreferrer" className='social-media-icon'>
@@ -40,7 +40,7 @@ const MyInfo = () => {
             <MyGmailIcon text="taufergabrielangelo@gmail.com" />
             {(!isMobile && !curriculumVitaeView) && (
               <Link href="#" onClick={() => setCurriculumVitaeView(true)} className="curriculum-vitae-icon social-media-icon">
-                <ContactPageIcon /> {t('Curriculum vitae')}
+                <ContactPageIcon /> {t('Curriculum vitae/Résumé')}
               </Link>
             )}
           </Container>

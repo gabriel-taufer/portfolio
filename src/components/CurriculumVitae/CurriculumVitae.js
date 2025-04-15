@@ -17,7 +17,7 @@ const CurriculumVitae = () => {
 
   const [height, setHeight] = useState(0)
 
-  useEffect(() => setHeight(printableRef.current.clientHeight))
+  useEffect(() => setHeight(printableRef.current.clientHeight), [])
 
   const handlePrint = useReactToPrint({
     pageStyle: `@media print {
@@ -49,9 +49,7 @@ const CurriculumVitae = () => {
             </h1>
             <div className='about-me-text'>
               <Container style={{ display: 'flex', flexDirection: 'column', alignItems: 'start', padding: 0 }}>
-                {t("presentationParagraph1")}&nbsp;
-                {t("presentationParagraph2")}&nbsp;
-                {t("presentationParagraph3")}
+                <p dangerouslySetInnerHTML={{ __html: t("curriculumPresentationParagraph") }} />
               </Container>
             </div>
           </Container>
