@@ -210,16 +210,35 @@ const MyTechnologies = () => {
               })}
             </Container>
           ) : (
-          <Container style={{ display: 'flex', justifyContent: 'space-around', flexWrap: 'wrap', padding: '18px 0 0 0' }}>
-            {Object.entries(MyTechnologiesSource).map(([title, technologies]) => {
-                return (
-                  <div>
-                    <h3>{t(title)}</h3>
-                    {Object.entries(technologies).map(([name]) => <p>{name}</p>)}
-                  </div>
-                )
-              })}
-            </Container>
+            <>
+            <Container
+              style={{ 
+                display: 'flex', 
+                justifyContent: 'space-around', 
+                flexWrap: 'wrap', 
+                padding: '18px 0 0 0',
+                flexDirection: 'column',
+              }}>
+                <ul 
+                  style={{ 
+                    paddingTop: 0, 
+                    marginTop: 0,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'start',
+                    textAlign: 'left',
+                  }}
+                >
+                  {Object.entries(MyTechnologiesSource).map(([title, technologies]) => {
+                  return (
+                      <li>
+                        <b>{t(title)}:</b> {Object.entries(technologies).map(([name]) => name).join(', ')}
+                      </li>
+                    )
+                  })}
+                </ul>
+              </Container>
+            </>
           )
         }
       </div>

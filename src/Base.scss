@@ -5,10 +5,18 @@ html {
   scroll-behavior: smooth;
 }
 
+.print-only {
+  display: none;
+}
+
 @media print {
 
   .no-print,
   .no-print * {
     display: none !important;
+  }
+
+  .print-only {
+    display: block !important;
   }
 }

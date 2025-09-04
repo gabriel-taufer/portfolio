@@ -22,7 +22,7 @@ const CurriculumVitae = () => {
   const handlePrint = useReactToPrint({
     pageStyle: `@media print {
       @page {
-        size: 300mm ${height + 100}px;
+        size: 300mm ${height + 120}px;
         margin: 0;
       }
     }`,

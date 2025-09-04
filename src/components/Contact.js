@@ -6,6 +6,7 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import MailIcon from '@mui/icons-material/Mail';
 import { Container, Link } from '@mui/material';
 import { useTranslation } from 'react-i18next';
+import { usePageViewStore } from '../store';
 
 
 const MyLinkedinIcon = ({size, text=''}) => {
@@ -25,6 +26,8 @@ const MyGitHubIcon = ({size, text=''}) => {
 }
 
 const MyInstagramIcon = ({size, text=''}) => {
+  const { curriculumVitaeView } = usePageViewStore()
+  if (curriculumVitaeView) return null
   return (
     <Link href="https://www.instagram.com/gabriel.taufer" target="_blank" rel="noreferrer" className="instagram-icon social-media-icon">
       <InstagramIcon fontSize={size} /> {text}

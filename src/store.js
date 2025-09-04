@@ -1,7 +1,7 @@
 import { create } from 'zustand'
 
 const usePageViewStore = create((set) => ({
-  curriculumVitaeView: false,
+  curriculumVitaeView: true,
   toggleCurriculumVitaeView: () => set((state) => ({ curriculumVitaeView: !state.curriculumVitaeView })),
   setCurriculumVitaeView: (value) => set((state) => ({ curriculumVitaeView: value })),
 }))

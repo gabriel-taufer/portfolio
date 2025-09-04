@@ -27,7 +27,8 @@ const MyInfo = () => {
             Gabriel Taufer
           </h1>
           <h2>
-            {t('Staff Engineer – Technical Leadership')}
+            {t('Staff Engineer')}
+            {/* {t('Staff Engineer – Technical Leadership')} */}
           </h2>
           <Container style={{ display: 'flex', flexDirection: 'column', alignItems: 'start', padding: 0 }}>
             <Link href="https://maps.app.goo.gl/FMsKZo6RkKjHnyWQ8" target="_blank" rel="noreferrer" className='social-media-icon'>
