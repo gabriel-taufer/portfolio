@@ -22,6 +22,7 @@ const About = () => {
         <div className='image-container'>
           {/* TODO: add professional picture */}
           <img
+            id="profile-pic"
             loading="lazy"
             decoding="async"
             width="640"
@@ -29,6 +30,11 @@ const About = () => {
             src="profile_pic.jpg"
             alt=""
           />
+           <div class="role-label">
+            <a href="https://www.linkedin.com/in/gabriel-taufer-91ab561a0/" target="_blank" rel="noreferrer">
+              Staff Engineer @ TestBox
+            </a>
+          </div>
         </div>
       </div>
     </Container>

@@ -31,14 +31,14 @@ const MyInfo = () => {
             {/* {t('Staff Engineer – Technical Leadership')} */}
           </h2>
           <Container style={{ display: 'flex', flexDirection: 'column', alignItems: 'start', padding: 0 }}>
-            <Link href="https://maps.app.goo.gl/FMsKZo6RkKjHnyWQ8" target="_blank" rel="noreferrer" className='social-media-icon'>
+            <Link href="https://maps.app.goo.gl/jShhcArWTiwwMUHH8" target="_blank" rel="noreferrer" className='social-media-icon'>
               <LocationOnIcon />
-              São Marcos, Rio Grande do Sul, Brazil.
+              Rio Grande do Sul, Brazil
             </Link>
             <MyLinkedinIcon text="Gabriel Taufer" />
             <MyGitHubIcon text="gabriel-taufer" />
             <MyInstagramIcon text="@gabriel.taufer" />
-            <MyGmailIcon text="taufergabrielangelo@gmail.com" />
+            <MyGmailIcon text="gabriel@taufer.dev" />
             {(!isMobile && !curriculumVitaeView) && (
               <Link href="#" onClick={() => setCurriculumVitaeView(true)} className="curriculum-vitae-icon social-media-icon">
                 <ContactPageIcon /> {t('Curriculum vitae/Résumé')}
@@ -50,6 +50,7 @@ const MyInfo = () => {
           <div className='image-container'>
             {/* TODO: add professional picture */}
             {!isMobile && <img
+              id="my-info-profile-image"
               loading="lazy"
               decoding="async"
               width="640"

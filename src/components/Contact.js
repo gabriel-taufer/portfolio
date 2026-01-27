@@ -37,21 +37,12 @@ const MyInstagramIcon = ({size, text=''}) => {
 
 const MyGmailIcon = ({size, text=''}) => {
   return (
-    <Link href="mailto:taufergabrielangelo@gmail.com" target="_blank" rel="noreferrer" className="gmail-icon social-media-icon">
+    <Link href="mailto:gabriel@taufer.dev" target="_blank" rel="noreferrer" className="gmail-icon social-media-icon">
       <MailIcon fontSize={size} /> {text}
     </Link>
   )
 }
 
-const SocialMediaIcons = ({ size = "medium" }) => {
-  return (
-    <div className="social-media-icons">
-      <MyLinkedinIcon size={size}/>
-      <MyGitHubIcon size={size}/>
-      <MyInstagramIcon size={size}/>
-    </div>
-  )
-}
 
 const Contact = () => {
   const { t } = useTranslation()
@@ -65,7 +56,6 @@ const Contact = () => {
         <p>
           {t("reachMeOutText")}
         </p>
-        {/* <SocialMediaIcons size="large" /> */}
       </div>
     </Container>
   )

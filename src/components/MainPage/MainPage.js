@@ -26,13 +26,15 @@ const MainPage = () => {
             <About />
             {/* <Divider /> */}
             <br />
-            <MySkills />
-            {/* <Divider /> */}
-            <br />
             <MyCareerTimeline />
             {/* <Divider /> */}
             <br />
+            <MySkills />
+            {/* <Divider /> */}
+            <br />
             <Contact />
+            <br />
+            <br />
             <MyInfo />
             <footer id="footer">
               <br />
