@@ -5,6 +5,7 @@ import tailwind from "@astrojs/tailwind";
 
 export default defineConfig({
   site: "https://taufer.dev",
+  base: "/",
   integrations: [mdx(), sitemap(), tailwind()],
   i18n: {
     defaultLocale: "en",
