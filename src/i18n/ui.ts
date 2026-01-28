@@ -15,16 +15,16 @@ export const ui = {
     'nav.projects': 'Projects',
 
     'home.greeting': "Hey, I'm Gabriel.",
-    'home.intro1': "I like when things break - because that's when you learn what holds them together.",
-    'home.intro2': "I'm the kind of person who takes things apart just to see how they work - and sometimes, to figure out why they don't.",
-    'home.intro3': "I love writing code, but what really keeps me engaged is the bigger picture - building with intention and thinking beyond the code, communicating clearly, and making sure everyone on a team knows what they're doing (and why).",
-    'home.intro4': "I believe good engineering is as much about people as it is about tech, and that the best solutions are the ones that actually make someone's day easier.",
+    'home.intro1': "I've spent the last 8 years building systems that need to work at scale and leading teams that make it happen. Right now, I'm the Technical Lead at TestBox, where I spend my days architecting integration platforms in Python and AWS—but honestly, what gets me up in the morning is helping engineers grow into the kind of developers who ship things people actually want to use.",
+    'home.intro2': "My background spans full-stack development, data engineering (Airflow, Snowflake, Databricks), and cloud infrastructure. I've led migrations from legacy systems that everyone was afraid to touch, optimized data pipelines that cut our storage costs in half, and built integration platforms that customers rely on every day. But the work I'm most proud of? That's usually the conversation where a junior dev finally *gets* why we architect things a certain way.",
+    'home.intro3': "I think great engineering happens at the intersection of solid technical decisions and genuine collaboration. You can write the most elegant code in the world, but if your team doesn't understand the problem you're solving or why it matters, you're just creating future tech debt. That's why I care as much about code reviews and architectural clarity as I do about shipping features.",
+    'home.intro4': "I'm a big believer that the best solutions are pragmatic ones—the kind that solve real problems without over-engineering. And that the best teams are built on clear communication, mutual respect, and creating an environment where people feel safe to ask questions and challenge ideas.",
 
     'home.career.title': 'Career',
     'home.career.seeAll': 'See all experience',
 
     'home.connect.title': "Let's Connect",
-    'home.connect.text': "If you want to talk about career opportunities, discuss about leveling up professionally, or just do some networking, I'm all ears! Don't hesitate to reach out - I'm here to connect, collaborate, and share ideas with like-minded people.",
+    'home.connect.text': "Whether you're tackling interesting engineering problems, looking for someone who can bridge technical depth with team leadership, or just want to talk shop about Python, AWS, or what makes a great engineering culture—I'm here for it. Always up for meaningful conversations about building software that matters and teams that thrive.",
 
     'work.title': 'Career',
 
@@ -43,16 +43,16 @@ export const ui = {
     'nav.projects': 'Projetos',
 
     'home.greeting': 'Olá, sou o Gabriel.',
-    'home.intro1': 'Gosto quando as coisas quebram - porque é aí que você descobre o que realmente as mantém de pé.',
-    'home.intro2': 'Sou do tipo que desmonta as coisas só para entender como funcionam - e às vezes, para descobrir por que não funcionam.',
-    'home.intro3': 'Adoro escrever código, mas o que me engaja de verdade é o que vai além disso - construir com propósito, pensar além do código, comunicar com clareza e garantir que todo mundo no time saiba o que está fazendo (e por quê).',
-    'home.intro4': 'Acredito que boa engenharia é tanto sobre pessoas quanto sobre tecnologia - e que as melhores soluções são aquelas que de fato facilitam o dia de alguém.',
+    'home.intro1': 'Passei os últimos 8 anos construindo sistemas que precisam funcionar em escala e liderando times que fazem isso acontecer. Atualmente sou Líder Técnico na TestBox, onde passo meus dias arquitetando plataformas de integração em Python e AWS—mas sinceramente, o que me motiva mesmo é ajudar engenheiros a crescerem e se tornarem o tipo de desenvolvedor que entrega coisas que as pessoas realmente querem usar.',
+    'home.intro2': 'Minha experiência abrange desenvolvimento full-stack, engenharia de dados (Airflow, Snowflake, Databricks) e infraestrutura em nuvem. Já liderei migrações de sistemas legados que todo mundo tinha medo de mexer, otimizei pipelines de dados que reduziram nossos custos de armazenamento pela metade, e construí plataformas de integração que clientes usam todos os dias. Mas o trabalho do qual mais me orgulho? Geralmente é aquela conversa onde um desenvolvedor júnior finalmente *entende* por que arquitetamos as coisas de uma certa forma.',
+    'home.intro3': 'Acredito que engenharia excelente acontece na interseção entre decisões técnicas sólidas e colaboração genuína. Você pode escrever o código mais elegante do mundo, mas se seu time não entende o problema que você está resolvendo ou por que ele importa, você está apenas criando débito técnico futuro. Por isso me importo tanto com revisões de código e clareza arquitetural quanto com entregar features.',
+    'home.intro4': 'Sou um grande defensor de que as melhores soluções são as pragmáticas—aquelas que resolvem problemas reais sem over-engineering. E que os melhores times são construídos sobre comunicação clara, respeito mútuo e criar um ambiente onde as pessoas se sintam seguras para fazer perguntas e desafiar ideias.',
 
     'home.career.title': 'Carreira',
     'home.career.seeAll': 'Ver experiência completa',
 
     'home.connect.title': 'Vamos Conectar',
-    'home.connect.text': 'Se você quiser conversar sobre oportunidades de carreira, trocar ideias sobre crescimento profissional ou fazer networking, estou à disposição! Pode me chamar - estou aqui para conectar, colaborar e trocar ideias com pessoas que pensam de forma semelhante.',
+    'home.connect.text': 'Se você está enfrentando problemas interessantes de engenharia, procurando alguém que consiga fazer a ponte entre profundidade técnica e liderança de times, ou só quer conversar sobre Python, AWS, ou o que faz uma cultura de engenharia excelente—estou disponível. Sempre aberto para conversas significativas sobre construir software que importa e times que prosperam.',
 
     'work.title': 'Carreira',
 
