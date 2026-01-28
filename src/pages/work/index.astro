@@ -2,7 +2,7 @@
 import { getCollection } from "astro:content";
 import PageLayout from "@layouts/PageLayout.astro";
 import Container from "@components/Container.astro";
-import { dateRange } from "@lib/utils";
+import { dateRange, groupWorkByCompany } from "@lib/utils";
 import { WORK } from "@consts";
 import { getLangFromUrl, useTranslations } from "@i18n/ui";
 
@@ -49,46 +49,10 @@ const work = await Promise.all(
   })
 );
 
-// Group work entries by company
-const groupedWork = work.reduce((acc, entry) => {
-  const companyName = entry.data.company;
-  if (!acc[companyName]) {
-    acc[companyName] = [];
-  }
-  acc[companyName].push(entry);
-  return acc;
-}, {} as Record<string, typeof work>);
-
-// Convert to array and sort by most recent role start date
-const companies = Object.entries(groupedWork)
-  .map(([company, roles]) => {
-    // Sort roles within company by start date (most recent first)
-    const sortedRoles = roles.sort((a, b) =>
-      new Date(b.data.dateStart).valueOf() - new Date(a.data.dateStart).valueOf()
-    );
-
-    // Get company-wide date range
-    const earliestStart = roles.reduce((earliest, role) => {
-      const roleStart = new Date(role.data.dateStart);
-      return roleStart < earliest ? roleStart : earliest;
-    }, new Date(roles[0].data.dateStart));
-
-    const latestEnd = roles.reduce((latest, role) => {
-      if (role.data.dateEnd === "Current") return new Date();
-      const roleEnd = new Date(role.data.dateEnd);
-      return roleEnd > latest ? roleEnd : latest;
-    }, roles[0].data.dateEnd === "Current" ? new Date() : new Date(roles[0].data.dateEnd));
-
-    return {
-      company,
-      roles: sortedRoles,
-      dateStart: earliestStart,
-      dateEnd: roles.some(r => r.data.dateEnd === "Current") ? "Current" : latestEnd,
-      hasMultipleRoles: roles.length > 1,
-      meta: companyMeta[company]
-    };
-  })
-  .sort((a, b) => new Date(b.dateStart).valueOf() - new Date(a.dateStart).valueOf());
+const companies = groupWorkByCompany(work).map(company => ({
+  ...company,
+  meta: companyMeta[company.company]
+}));
 ---
 
 <PageLayout title={WORK.TITLE} description={WORK.DESCRIPTION}>

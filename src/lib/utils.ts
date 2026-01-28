@@ -42,3 +42,50 @@ export function dateRange(startDate: Date, endDate?: Date | string, locale: stri
 
   return `${startMonth} ${startYear} - ${endMonth}${endMonth ? " " : ""}${endYear}`;
 }
+
+// Group work entries by company and calculate date ranges
+export function groupWorkByCompany<T extends { data: { company: string; dateStart: Date; dateEnd: Date | string } }>(
+  work: T[]
+): Array<{
+  company: string;
+  roles: T[];
+  dateStart: Date;
+  dateEnd: Date | string;
+  hasMultipleRoles: boolean;
+}> {
+  const grouped = work.reduce((acc, entry) => {
+    const companyName = entry.data.company;
+    if (!acc[companyName]) {
+      acc[companyName] = [];
+    }
+    acc[companyName].push(entry);
+    return acc;
+  }, {} as Record<string, T[]>);
+
+  return Object.entries(grouped)
+    .map(([company, roles]) => {
+      const sortedRoles = roles.sort((a, b) =>
+        new Date(b.data.dateStart).valueOf() - new Date(a.data.dateStart).valueOf()
+      );
+
+      const earliestStart = roles.reduce((earliest, role) => {
+        const roleStart = new Date(role.data.dateStart);
+        return roleStart < earliest ? roleStart : earliest;
+      }, new Date(roles[0].data.dateStart));
+
+      const latestEnd = roles.reduce((latest, role) => {
+        if (role.data.dateEnd === "Current") return new Date();
+        const roleEnd = new Date(role.data.dateEnd);
+        return roleEnd > latest ? roleEnd : latest;
+      }, roles[0].data.dateEnd === "Current" ? new Date() : new Date(roles[0].data.dateEnd));
+
+      return {
+        company,
+        roles: sortedRoles,
+        dateStart: earliestStart,
+        dateEnd: roles.some(r => r.data.dateEnd === "Current") ? "Current" : latestEnd,
+        hasMultipleRoles: roles.length > 1
+      };
+    })
+    .sort((a, b) => new Date(b.dateStart).valueOf() - new Date(a.dateStart).valueOf());
+}
