@@ -1,8 +1,8 @@
 ---
 company: "Develcode"
 role: "Líder Técnico"
-dateStart: "2019-07-01"
-dateEnd: "2020-05-01"
+dateStart: "2021-07-01"
+dateEnd: "2021-09-16"
 ---
 
 - Líder técnico em um projeto de integração utilizando SpringBoot e ReactJS

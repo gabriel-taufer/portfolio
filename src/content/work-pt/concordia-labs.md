@@ -1,8 +1,8 @@
 ---
 company: "Concordia Labs"
 role: "Desenvolvedor Full Stack"
-dateStart: "2017-01-01"
-dateEnd: "2018-08-01"
+dateStart: "2020-07-01"
+dateEnd: "Current"
 ---
 
 - Construí plataformas como app de academia, sistema de associação (com reservas, usuários e pagamentos), sistema de manutenção industrial e dashboards de e-commerce

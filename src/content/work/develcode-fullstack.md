@@ -1,8 +1,8 @@
 ---
 company: "Develcode"
 role: "Full Stack Developer"
-dateStart: "2018-08-01"
-dateEnd: "2019-07-01"
+dateStart: "2021-01-10"
+dateEnd: "2021-07-01"
 ---
 
 - Built frontend applications with ReactJS and TypeScript

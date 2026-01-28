@@ -2,7 +2,7 @@
 company: "Lumenalta (formerly Clevertech)"
 role: "Data Engineer"
 dateStart: "2022-07-01"
-dateEnd: "2023-11-01"
+dateEnd: "2024-10-16"
 ---
 
 - Maintained and optimized ETL pipelines with Airflow, Databricks, Snowflake, PostgreSQL, Redshift, and AWS

@@ -1,7 +1,7 @@
 ---
 company: "TestBox"
 role: "Líder Técnico"
-dateStart: "2023-11-01"
+dateStart: "2024-10-16"
 dateEnd: "Current"
 ---
 

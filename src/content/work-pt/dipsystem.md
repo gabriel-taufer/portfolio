@@ -1,8 +1,8 @@
 ---
 company: "Dipsystem"
 role: "Desenvolvedor Full Stack"
-dateStart: "2016-01-01"
-dateEnd: "2017-01-01"
+dateStart: "2018-03-01"
+dateEnd: "2021-01-01"
 ---
 
 - Portei um sistema de rastreamento legado para uma arquitetura moderna

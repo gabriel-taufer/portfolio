@@ -1,8 +1,8 @@
 ---
 company: "Develcode"
 role: "Desenvolvedor Full Stack"
-dateStart: "2018-08-01"
-dateEnd: "2019-07-01"
+dateStart: "2021-01-01"
+dateEnd: "2021-07-01"
 ---
 
 - Criei aplicações frontend com ReactJS e TypeScript

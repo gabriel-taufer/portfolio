@@ -20,21 +20,25 @@ export function readingTime(html: string) {
   return `${readingTimeMinutes} min read`;
 }
 
-export function dateRange(startDate: Date, endDate?: Date | string): string {
-  const startMonth = startDate.toLocaleString("default", { month: "short" });
+export function dateRange(startDate: Date, endDate?: Date | string, locale: string = "en"): string {
+  const localeCode = locale === "pt" ? "pt-BR" : "en-US";
+  const currentLabel = locale === "pt" ? "Atual" : "Current";
+  
+  const startMonth = startDate.toLocaleString(localeCode, { month: "short" });
   const startYear = startDate.getFullYear().toString();
   let endMonth;
   let endYear;
 
   if (endDate) {
     if (typeof endDate === "string") {
+      // Handle "Current" string
       endMonth = "";
-      endYear = endDate;
+      endYear = endDate === "Current" ? currentLabel : endDate;
     } else {
-      endMonth = endDate.toLocaleString("default", { month: "short" });
+      endMonth = endDate.toLocaleString(localeCode, { month: "short" });
       endYear = endDate.getFullYear().toString();
     }
   }
 
-  return `${startMonth} ${startYear} - ${endMonth}${endMonth ? ' ' : ''}${endYear}`;
+  return `${startMonth} ${startYear} - ${endMonth}${endMonth ? " " : ""}${endYear}`;
 }

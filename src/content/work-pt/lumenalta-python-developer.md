@@ -1,7 +1,7 @@
 ---
 company: "Lumenalta (anteriormente Clevertech)"
 role: "Desenvolvedor Python"
-dateStart: "2021-04-01"
+dateStart: "2022-02-01"
 dateEnd: "2022-07-01"
 ---
 

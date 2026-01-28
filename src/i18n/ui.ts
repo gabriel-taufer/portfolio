@@ -15,24 +15,23 @@ export const ui = {
     'nav.projects': 'Projects',
 
     'home.greeting': "Hey, I'm Gabriel.",
-    'home.intro1': "I like when things break - because that's when you learn what holds them together.",
-    'home.intro2': "I'm the kind of person who takes things apart just to see how they work - and sometimes, to figure out why they don't.",
-    'home.intro3': "I love writing code, but what really keeps me engaged is the bigger picture - building with intention and thinking beyond the code, communicating clearly, and making sure everyone on a team knows what they're doing (and why).",
-    'home.intro4': "I believe good engineering is as much about people as it is about tech, and that the best solutions are the ones that actually make someone's day easier.",
+    'home.intro1': "Currently Lead Engineer at TestBox. I run the integrations team - designing architecture, building, mentoring engineers, and making sure things don't break - that much.",
+    'home.intro2': "Over 8 years I've done a bit of everything: ETL pipelines, Android apps, legacy migrations. Specialized in reverse-engineering third-party APIs when the docs didn't exist - and that might be the most fun.",
+    'home.intro3': "Brazilian. Remote. Top 0.001% <span onclick=\"document.getElementById('catb-embed').classList.toggle('grid-rows-[1fr]'); document.getElementById('catb-embed').classList.toggle('opacity-100'); document.getElementById('catb-embed').classList.toggle('grid-rows-[0fr]'); document.getElementById('catb-embed').classList.toggle('opacity-0');\" class=\"underline underline-offset-2 decoration-black/15 dark:decoration-white/30 hover:decoration-black/25 hover:dark:decoration-white/50 hover:text-black hover:dark:text-white transition-colors duration-300 cursor-pointer\">Catfish and the Bottlemen</span> listener.",
 
     'home.career.title': 'Career',
     'home.career.seeAll': 'See all experience',
 
     'home.connect.title': "Let's Connect",
-    'home.connect.text': "If you want to talk about career opportunities, discuss about leveling up professionally, or just do some networking, I'm all ears! Don't hesitate to reach out - I'm here to connect, collaborate, and share ideas with like-minded people.",
+    'home.connect.text': "Reach out if you want to talk engineering, leadership, or just say hi.",
 
     'work.title': 'Career',
 
-    'skills.title': 'My Skills',
-    'skills.intro': 'Here are some of the main technologies I\'m experienced with',
+    'skills.title': 'Skills',
+    'skills.intro': 'Technologies I work with regularly',
 
     'contact.title': "Let's Chat",
-    'contact.subtitle': 'Reach out to me through social media',
+    'contact.subtitle': 'Find me on',
   },
   pt: {
     'nav.home': 'Início',
@@ -42,25 +41,24 @@ export const ui = {
     'nav.contact': 'Contato',
     'nav.projects': 'Projetos',
 
-    'home.greeting': 'Olá, sou o Gabriel.',
-    'home.intro1': 'Gosto quando as coisas quebram - porque é aí que você descobre o que realmente as mantém de pé.',
-    'home.intro2': 'Sou do tipo que desmonta as coisas só para entender como funcionam - e às vezes, para descobrir por que não funcionam.',
-    'home.intro3': 'Adoro escrever código, mas o que me engaja de verdade é o que vai além disso - construir com propósito, pensar além do código, comunicar com clareza e garantir que todo mundo no time saiba o que está fazendo (e por quê).',
-    'home.intro4': 'Acredito que boa engenharia é tanto sobre pessoas quanto sobre tecnologia - e que as melhores soluções são aquelas que de fato facilitam o dia de alguém.',
+    'home.greeting': 'E aí, sou o Gabriel.',
+    'home.intro1': "Atualmente Lead Engineer na TestBox. Lidero o time de integrações - arquitetura, desenvolvimento, mentoria, e garantindo que nada quebre - tanto assim.",
+    'home.intro2': "Em 8 anos fiz um pouco de tudo: pipelines ETL, apps Android, migrações de sistemas legados. Me especializei em engenharia reversa de APIs quando a documentação não existia - e essa talvez seja a parte mais divertida.",
+    'home.intro3': "Brasileiro. Remoto. Top 0.001% ouvinte de <span onclick=\"document.getElementById('catb-embed').classList.toggle('grid-rows-[1fr]'); document.getElementById('catb-embed').classList.toggle('opacity-100'); document.getElementById('catb-embed').classList.toggle('grid-rows-[0fr]'); document.getElementById('catb-embed').classList.toggle('opacity-0');\" class=\"underline underline-offset-2 decoration-black/15 dark:decoration-white/30 hover:decoration-black/25 hover:dark:decoration-white/50 hover:text-black hover:dark:text-white transition-colors duration-300 cursor-pointer\">Catfish and the Bottlemen</span>.",
 
     'home.career.title': 'Carreira',
     'home.career.seeAll': 'Ver experiência completa',
 
     'home.connect.title': 'Vamos Conectar',
-    'home.connect.text': 'Se você quiser conversar sobre oportunidades de carreira, trocar ideias sobre crescimento profissional ou fazer networking, estou à disposição! Pode me chamar - estou aqui para conectar, colaborar e trocar ideias com pessoas que pensam de forma semelhante.',
+    'home.connect.text': "Me chama se quiser falar sobre engenharia, liderança, ou só dar um oi.",
 
     'work.title': 'Carreira',
 
-    'skills.title': 'Minhas Habilidades',
-    'skills.intro': 'Aqui estão algumas das principais tecnologias que eu domino',
+    'skills.title': 'Habilidades',
+    'skills.intro': 'Tecnologias que uso regularmente',
 
     'contact.title': 'Vamos Conversar',
-    'contact.subtitle': 'Me chame nas redes sociais',
+    'contact.subtitle': 'Me encontre no',
   },
 } as const;
 

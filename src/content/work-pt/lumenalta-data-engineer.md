@@ -2,7 +2,7 @@
 company: "Lumenalta (anteriormente Clevertech)"
 role: "Engenheiro de Dados"
 dateStart: "2022-07-01"
-dateEnd: "2023-11-01"
+dateEnd: "2024-10-01"
 ---
 
 - Mantive e otimizei pipelines ETL com Airflow, Databricks, Snowflake, PostgreSQL, Redshift e AWS

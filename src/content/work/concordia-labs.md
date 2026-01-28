@@ -1,8 +1,8 @@
 ---
 company: "Concordia Labs"
 role: "Full Stack Developer"
-dateStart: "2017-01-01"
-dateEnd: "2018-08-01"
+dateStart: "2020-07-01"
+dateEnd: "Current"
 ---
 
 - Built platforms including a gym app, membership system (with reservations, users, and payments), industrial maintenance system, and e-commerce dashboards

@@ -6,71 +6,261 @@ import { getLangFromUrl, useTranslations } from "@i18n/ui";
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const skills = {
-  "Languages & Others": {
-    "Python": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/python/python-original.svg",
-    "JavaScript": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/javascript/javascript-original.svg",
-    "TypeScript": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/typescript/typescript-original.svg",
-    "NodeJS": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/nodejs/nodejs-original-wordmark.svg",
-    "HTML5": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/html5/html5-original.svg",
-    "CSS3": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/css3/css3-original.svg",
-    "SASS": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/sass/sass-original.svg",
-    "TailWind": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/tailwindcss/tailwindcss-original.svg",
-  },
-  "Frameworks & Libs": {
-    "Django": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/django/django-plain.svg",
-    "Django Rest": "http://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/djangorest/djangorest-original.svg",
-    "Apache Airflow": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/apacheairflow/apacheairflow-original.svg",
-    "FastAPI": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/fastapi/fastapi-original.svg",
-    "Flask": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/flask/flask-original.svg",
-    "SQLAlchemy": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/sqlalchemy/sqlalchemy-original.svg",
-    "ReactJS": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/react/react-original.svg",
-    "NextJS": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/nextjs/nextjs-original.svg",
-    "Pandas": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/pandas/pandas-original.svg",
-    "Plotly": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/plotly/plotly-original.svg",
-    "Selenium": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/selenium/selenium-original.svg",
-  },
-  "Databases": {
-    "PostgreSQL": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/postgresql/postgresql-original.svg",
-    "MySQL": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/mysql/mysql-original.svg",
-    "SQLite": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/sqlite/sqlite-original.svg",
-    "DynamoDB": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/dynamodb/dynamodb-original.svg",
-    "Redis": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/redis/redis-original.svg",
-    "RabbitMQ": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/rabbitmq/rabbitmq-original.svg",
-    "Redshift": "/tech_icons/aws_redshift.svg",
-    "MongoDB": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/mongodb/mongodb-original.svg",
-  },
-  "Other technologies": {
-    "Docker": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/docker/docker-original.svg",
-    "Terraform": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/terraform/terraform-original.svg",
-    "AWS": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/amazonwebservices/amazonwebservices-original-wordmark.svg",
-    "AWS Lambda": "/tech_icons/aws_lambda.svg",
-    "AWS S3": "/tech_icons/aws_s3.svg",
-    "AWS EC2": "/tech_icons/aws_ec2.svg",
-    "DigitalOcean": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/digitalocean/digitalocean-original.svg",
-    "GCP": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/googlecloud/googlecloud-original.svg",
-    "Git": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/git/git-original.svg",
-    "GitHub": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/github/github-original.svg",
-    "GitHub Actions": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/githubactions/githubactions-plain.svg",
-    "CircleCI": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/circleci/circleci-plain.svg",
-    "GraphQL": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/graphql/graphql-plain.svg",
-    "Snowflake": "/tech_icons/snowflake.svg",
-    "CloudFlare": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/cloudflare/cloudflare-original.svg",
-  }
+type Skill = {
+  icon: string;
+  years: string;
+  needsBackground?: boolean;
+  favorite?: boolean;
 };
+
+type SkillCategory = {
+  [skillName: string]: Skill;
+};
+
+type Skills = {
+  [categoryName: string]: SkillCategory;
+};
+
+const skills: Skills = {
+  "Languages & Core": {
+    "Python": {
+      icon: "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/python/python-original.svg",
+      years: "8+",
+      favorite: true,
+    },
+    "JavaScript": {
+      icon: "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/javascript/javascript-original.svg",
+      years: "8+",
+      favorite: true,
+    },
+    "TypeScript": {
+      icon: "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/typescript/typescript-original.svg",
+      years: "5+",
+    },
+    "NodeJS": {
+      icon: "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/nodejs/nodejs-original-wordmark.svg",
+      years: "6+",
+      favorite: true,
+    },
+    "HTML5": {
+      icon: "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/html5/html5-original.svg",
+      years: "8+",
+    },
+    "CSS3": {
+      icon: "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/css3/css3-original.svg",
+      years: "8+",
+    },
+    "SASS": {
+      icon: "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/sass/sass-original.svg",
+      years: "5+",
+    },
+    "Bash/Linux": {
+      icon: "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/bash/bash-original.svg",
+      years: "7+",
+      needsBackground: true,
+    },
+  },
+  "Frameworks & Libraries": {
+    "Django": {
+      icon: "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/django/django-plain.svg",
+      years: "6+",
+      needsBackground: true,
+      favorite: true,
+    },
+    "Django Rest": {
+      icon: "http://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/djangorest/djangorest-original.svg",
+      years: "6+",
+      favorite: true,
+      needsBackground: true,
+    },
+    "FastAPI": {
+      icon: "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/fastapi/fastapi-original.svg",
+      years: "3+",
+    },
+    "Flask": {
+      icon: "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/flask/flask-original.svg",
+      years: "4+",
+      needsBackground: true,
+    },
+    "SQLAlchemy": {
+      icon: "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/sqlalchemy/sqlalchemy-original.svg",
+      years: "5+",
+      needsBackground: true,
+    },
+    "ReactJS": {
+      icon: "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/react/react-original.svg",
+      years: "5+",
+    },
+    "NextJS": {
+      icon: "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/nextjs/nextjs-original.svg",
+      years: "2+",
+      needsBackground: true,
+    },
+    "Astro": {
+      icon: "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/astro/astro-original.svg",
+      years: "1+",
+      needsBackground: true,
+    },
+    "TailwindCSS": {
+      icon: "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/tailwindcss/tailwindcss-original.svg",
+      years: "3+",
+    },
+  },
+  "Data Engineering": {
+    "Apache Airflow": {
+      icon: "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/apacheairflow/apacheairflow-original.svg",
+      years: "4+",
+      favorite: true,
+    },
+    "Pandas": {
+      icon: "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/pandas/pandas-original.svg",
+      years: "5+",
+    },
+    "Snowflake": {
+      icon: "/tech_icons/snowflake.svg",
+      years: "3+",
+    },
+    "Databricks": {
+      icon: "https://www.vectorlogo.zone/logos/databricks/databricks-icon.svg",
+      years: "2+",
+    },
+    "Redshift": {
+      icon: "/tech_icons/aws_redshift.svg",
+      years: "3+",
+    },
+    "Plotly": {
+      icon: "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/plotly/plotly-original.svg",
+      years: "3+",
+    },
+  },
+  "Testing & QA": {
+    "pytest": {
+      icon: "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/pytest/pytest-original.svg",
+      years: "6+",
+    },
+    "Selenium": {
+      icon: "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/selenium/selenium-original.svg",
+      years: "4+",
+    },
+    "Playwright": {
+      icon: "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/playwright/playwright-original.svg",
+      years: "2+",
+    },
+  },
+  "Databases & Messaging": {
+    "PostgreSQL": {
+      icon: "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/postgresql/postgresql-original.svg",
+      years: "7+",
+      favorite: true,
+    },
+    "MySQL": {
+      icon: "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/mysql/mysql-original.svg",
+      years: "5+",
+    },
+    "SQLite": {
+      icon: "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/sqlite/sqlite-original.svg",
+      years: "5+",
+    },
+    "DynamoDB": {
+      icon: "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/dynamodb/dynamodb-original.svg",
+      years: "3+",
+    },
+    "Redis": {
+      icon: "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/redis/redis-original.svg",
+      years: "3+",
+    },
+    "RabbitMQ": {
+      icon: "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/rabbitmq/rabbitmq-original.svg",
+      years: "2+",
+    },
+    "MongoDB": {
+      icon: "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/mongodb/mongodb-original.svg",
+      years: "2+",
+    },
+  },
+  "Cloud & DevOps": {
+    "AWS": {
+      icon: "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/amazonwebservices/amazonwebservices-original-wordmark.svg",
+      years: "6+",
+      favorite: true,
+    },
+    "AWS Lambda": {
+      icon: "/tech_icons/aws_lambda.svg",
+      years: "4+",
+    },
+    "AWS S3": {
+      icon: "/tech_icons/aws_s3.svg",
+      years: "6+",
+    },
+    "AWS EC2": {
+      icon: "/tech_icons/aws_ec2.svg",
+      years: "5+",
+    },
+    "Docker": {
+      icon: "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/docker/docker-original.svg",
+      years: "5+",
+      favorite: true,
+    },
+    "Terraform": {
+      icon: "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/terraform/terraform-original.svg",
+      years: "3+",
+    },
+    "GCP": {
+      icon: "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/googlecloud/googlecloud-original.svg",
+      years: "2+",
+    },
+    "DigitalOcean": {
+      icon: "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/digitalocean/digitalocean-original.svg",
+      years: "2+",
+    },
+    "CloudFlare": {
+      icon: "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/cloudflare/cloudflare-original.svg",
+      years: "2+",
+    },
+  },
+  "Tools & Workflow": {
+    "Git": {
+      icon: "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/git/git-original.svg",
+      years: "8+",
+      favorite: true,
+    },
+    "GitHub": {
+      icon: "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/github/github-original.svg",
+      years: "8+",
+      needsBackground: true,
+    },
+    "GitHub Actions": {
+      icon: "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/githubactions/githubactions-plain.svg",
+      years: "3+",
+    },
+    "CircleCI": {
+      icon: "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/circleci/circleci-plain.svg",
+      years: "3+",
+      needsBackground: true,
+    },
+    "GraphQL": {
+      icon: "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/graphql/graphql-plain.svg",
+      years: "2+",
+    },
+  },
+};
+
+const yearsLabel = lang === "pt" ? "anos" : "years";
+const favoriteLabel = lang === "pt" ? "Favorito" : "Favorite";
 ---
 
-<PageLayout title={t('skills.title')} description="Technologies and tools I'm experienced with">
+<PageLayout title={t("skills.title")} description="Technologies and tools I'm experienced with">
   <Container>
     <div class="space-y-10">
       <div class="animate font-semibold text-black dark:text-white">
-        {t('skills.title')}
+        {t("skills.title")}
       </div>
 
       <p class="animate text-center opacity-75">
-        {t('skills.intro')}
+        {t("skills.intro")}
       </p>
 
+      <!-- Technical Skills -->
       <div class="space-y-12">
         {Object.entries(skills).map(([category, techs]) => (
           <div class="animate space-y-4">
@@ -78,15 +268,45 @@ const skills = {
               {category}
             </h3>
             <div class="flex flex-wrap justify-center gap-6">
-              {Object.entries(techs).map(([name, src]) => (
-                <div class="flex flex-col items-center gap-2">
-                  <img
-                    src={src}
-                    alt={name}
-                    class="w-16 h-16 object-contain"
-                    loading="lazy"
-                  />
+              {Object.entries(techs).map(([name, skill]) => (
+                <div class="skill-card group relative flex flex-col items-center gap-2 cursor-pointer">
+                  <div class="relative">
+                    <div class={`icon-wrapper ${skill.needsBackground ? "needs-bg" : ""}`}>
+                      <img
+                        src={skill.icon}
+                        alt={name}
+                        class="w-16 h-16 object-contain transition-transform group-hover:scale-110"
+                        loading="lazy"
+                      />
+                    </div>
+                    {skill.favorite && (
+                      <span class="favorite-star" title={favoriteLabel}>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+                          <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clip-rule="evenodd" />
+                        </svg>
+                      </span>
+                    )}
+                  </div>
                   <span class="text-xs text-center opacity-75">{name}</span>
+                  
+                  <!-- Hover Card -->
+                  <div class="skill-tooltip absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-1.5 bg-white dark:bg-zinc-800 rounded-md shadow-lg border border-zinc-200 dark:border-zinc-700 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10 whitespace-nowrap">
+                    <div class="flex items-center gap-2 text-xs">
+                      <span class="opacity-75">{skill.years} {yearsLabel}</span>
+                      {skill.favorite && (
+                        <>
+                          <span class="opacity-40">·</span>
+                          <span class="text-amber-500 flex items-center gap-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-3 h-3">
+                              <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clip-rule="evenodd" />
+                            </svg>
+                            {favoriteLabel}
+                          </span>
+                        </>
+                      )}
+                    </div>
+                    <div class="tooltip-arrow"></div>
+                  </div>
                 </div>
               ))}
             </div>
@@ -96,3 +316,53 @@ const skills = {
     </div>
   </Container>
 </PageLayout>
+
+<style>
+  .skill-card:hover .skill-tooltip {
+    transform: translateX(-50%) translateY(-4px);
+  }
+  
+  .tooltip-arrow {
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid white;
+  }
+  
+  :global(.dark) .tooltip-arrow {
+    border-top-color: rgb(39 39 42);
+  }
+  
+  /* Icon background for contrast */
+  .icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    padding: 4px;
+  }
+  
+  .icon-wrapper.needs-bg {
+    background-color: transparent;
+  }
+  
+  :global(.dark) .icon-wrapper.needs-bg {
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 12px;
+    padding: 8px;
+  }
+  
+  /* Favorite star */
+  .favorite-star {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    color: rgb(245 158 11); /* amber-500 */
+    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.1));
+  }
+</style>

@@ -1,8 +1,8 @@
 ---
 company: "Dipsystem"
 role: "Full Stack Developer"
-dateStart: "2016-01-01"
-dateEnd: "2017-01-01"
+dateStart: "2018-03-01"
+dateEnd: "2021-01-10"
 ---
 
 - Ported a legacy tracking system into a new, modern architecture
