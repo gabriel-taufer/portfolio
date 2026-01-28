@@ -1,0 +1,595 @@
+---
+import { SITE, SOCIALS } from "@consts";
+import { getLangFromUrl, useTranslations } from "@i18n/ui";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const linkedinUrl = SOCIALS.find(s => s.NAME === "linkedin")?.HREF;
+const githubUrl = SOCIALS.find(s => s.NAME === "github")?.HREF;
+---
+
+<!DOCTYPE html>
+<html lang={lang}>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{t("cv.title")} - {SITE.NAME}</title>
+  <meta name="description" content={t("cv.summary")} />
+  <link rel="icon" type="image/png" sizes="32x32" href="/tau-32.png">
+  
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Times New Roman', Times, Georgia, serif;
+      line-height: 1.5;
+      color: #1a1a1a;
+      background: white;
+      font-size: 14px;
+    }
+    
+    .cv-container {
+      max-width: 850px;
+      margin: 0 auto;
+      padding: 40px;
+    }
+    
+    /* Header */
+    .cv-header {
+      text-align: center;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid #1a1a1a;
+    }
+    
+    .cv-name {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 2px;
+    }
+    
+    .cv-title {
+      font-size: 15px;
+      color: #555;
+      margin-bottom: 8px;
+    }
+    
+    .cv-contact {
+      font-size: 12px;
+      color: #444;
+      margin-bottom: 4px;
+    }
+    
+    .cv-contact a {
+      color: #444;
+      text-decoration: none;
+    }
+    
+    .cv-contact a:hover {
+      text-decoration: underline;
+    }
+    
+    .cv-languages {
+      font-size: 12px;
+      color: #666;
+    }
+    
+    /* Summary */
+    .cv-summary {
+      margin-bottom: 20px;
+      color: #333;
+      line-height: 1.5;
+      font-size: 13px;
+    }
+    
+    /* Sections */
+    .cv-section {
+      margin-bottom: 20px;
+    }
+    
+    .cv-section-title {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #1a1a1a;
+      margin-bottom: 12px;
+      padding-bottom: 4px;
+      border-bottom: 1px solid #ccc;
+    }
+    
+    /* Experience */
+    .cv-company {
+      margin-bottom: 14px;
+    }
+    
+    .cv-company:last-child {
+      margin-bottom: 0;
+    }
+    
+    .cv-company-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 4px;
+    }
+    
+    .cv-company-name {
+      font-weight: 600;
+      font-size: 13px;
+    }
+    
+    .cv-company-date {
+      font-size: 12px;
+      color: #666;
+    }
+    
+    .cv-role {
+      margin-bottom: 8px;
+      margin-left: 12px;
+      padding-left: 10px;
+      border-left: 2px solid #ddd;
+    }
+    
+    .cv-role:last-child {
+      margin-bottom: 0;
+    }
+    
+    .cv-role-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 2px;
+    }
+    
+    .cv-role-title {
+      font-weight: 500;
+      font-size: 12px;
+      color: #333;
+    }
+    
+    .cv-role-date {
+      font-size: 11px;
+      color: #888;
+    }
+    
+    .cv-role-content {
+      font-size: 12px;
+      color: #444;
+      line-height: 1.4;
+    }
+    
+    .cv-role-content ul {
+      margin: 0;
+      padding-left: 18px;
+      list-style-type: disc;
+    }
+    
+    .cv-role-content li {
+      margin-bottom: 2px;
+      display: list-item;
+    }
+    
+    /* Single role company (no nesting) */
+    .cv-company.single-role .cv-role {
+      margin-left: 0;
+      padding-left: 0;
+      border-left: none;
+    }
+    
+    /* Projects */
+    .cv-project {
+      margin-bottom: 10px;
+    }
+    
+    .cv-project:last-child {
+      margin-bottom: 0;
+    }
+    
+    .cv-project-title {
+      font-weight: 600;
+      font-size: 12px;
+    }
+    
+    .cv-project-title a {
+      color: #1a1a1a;
+      text-decoration: none;
+    }
+    
+    .cv-project-desc {
+      font-size: 11px;
+      color: #555;
+      line-height: 1.4;
+    }
+    
+    .cv-project-url {
+      font-size: 10px;
+      font-weight: 400;
+      color: #777;
+    }
+    
+    /* Skills */
+    .cv-skills-list {
+      font-size: 12px;
+      line-height: 1.6;
+    }
+    
+    .cv-skills-list strong {
+      font-weight: 600;
+    }
+    
+    /* Print button */
+    .print-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      padding: 12px 20px;
+      background: #1a1a1a;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    
+    .print-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+    }
+    
+    .back-link {
+      position: fixed;
+      bottom: 24px;
+      left: 24px;
+      padding: 12px 20px;
+      background: #f5f5f5;
+      color: #333;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    
+    .back-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+    }
+    
+    /* Print styles */
+    @media print {
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      
+      body {
+        font-size: 11px;
+        line-height: 1.35;
+        background: white;
+      }
+      
+      .cv-container {
+        padding: 0;
+        max-width: none;
+        width: 100%;
+      }
+      
+      .print-btn, .back-link {
+        display: none !important;
+      }
+      
+      .cv-header {
+        margin-bottom: 14px;
+        padding-bottom: 10px;
+      }
+      
+      .cv-name {
+        font-size: 22px;
+      }
+      
+      .cv-title {
+        font-size: 12px;
+      }
+      
+      .cv-contact, .cv-languages {
+        font-size: 10px;
+      }
+      
+      .cv-summary {
+        margin-bottom: 14px;
+        font-size: 10px;
+        line-height: 1.35;
+      }
+      
+      .cv-section {
+        margin-bottom: 14px;
+      }
+      
+      .cv-section-title {
+        font-size: 11px;
+        margin-bottom: 8px;
+        padding-bottom: 3px;
+      }
+      
+      .cv-company {
+        margin-bottom: 10px;
+        break-inside: avoid;
+      }
+      
+      .cv-company-name {
+        font-size: 11px;
+      }
+      
+      .cv-company-date {
+        font-size: 10px;
+      }
+      
+      .cv-role {
+        margin-bottom: 6px;
+        margin-left: 10px;
+        padding-left: 8px;
+      }
+      
+      .cv-role-title {
+        font-size: 10px;
+      }
+      
+      .cv-role-date {
+        font-size: 9px;
+      }
+      
+      .cv-role-content {
+        font-size: 10px;
+        line-height: 1.3;
+      }
+      
+      .cv-role-content li {
+        margin-bottom: 1px;
+      }
+      
+      .cv-project {
+        margin-bottom: 6px;
+        break-inside: avoid;
+      }
+      
+      .cv-project-title {
+        font-size: 10px;
+      }
+      
+      .cv-project-desc {
+        font-size: 9px;
+      }
+      
+      .cv-skills-list {
+        font-size: 10px;
+        line-height: 1.5;
+      }
+      
+      a {
+        color: inherit !important;
+        text-decoration: none !important;
+      }
+    }
+    
+    @page {
+      size: letter;
+      margin: 0.4in 0.5in;
+    }
+  </style>
+</head>
+<body>
+  <div class="cv-container">
+    <header class="cv-header">
+      <h1 class="cv-name">{SITE.NAME}</h1>
+      <p class="cv-title">Staff Engineer</p>
+      <p class="cv-contact">
+        {SITE.EMAIL} · <a href="https://taufer.dev">taufer.dev</a> · <a href={linkedinUrl}>linkedin.com/in/gabriel-taufer</a> · <a href={githubUrl}>github.com/gabriel-taufer</a>
+      </p>
+      <p class="cv-languages">Brazil (Remote) · English: Fluent · Portuguese: Native · German: Beginner</p>
+    </header>
+
+    <p class="cv-summary">
+      {t("cv.summary")}
+    </p>
+
+    <section class="cv-section">
+      <h2 class="cv-section-title">{t("cv.experience")}</h2>
+      
+      <div class="cv-company single-role">
+        <div class="cv-company-header">
+          <span class="cv-company-name">TestBox</span>
+          <span class="cv-company-date">Oct 2024 – Present</span>
+        </div>
+        <div class="cv-role">
+          <div class="cv-role-header">
+            <span class="cv-role-title">Lead Engineer</span>
+          </div>
+          <div class="cv-role-content">
+            <ul>
+              <li>Lead a team of 5+ engineers building and maintaining client-facing integrations</li>
+              <li>Built and scaled backend infrastructure in Python and AWS (Terraform, Lambda, CircleCI)</li>
+              <li>Made architecture and design decisions aligned with product and business goals</li>
+              <li>Mentored engineers through reviews, guidance, and technical support</li>
+              <li>Delivered 5+ production client integrations</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="cv-company">
+        <div class="cv-company-header">
+          <span class="cv-company-name">Lumenalta (formerly Clevertech)</span>
+          <span class="cv-company-date">Sep 2021 – Oct 2024</span>
+        </div>
+        <div class="cv-role">
+          <div class="cv-role-header">
+            <span class="cv-role-title">Data Engineer</span>
+            <span class="cv-role-date">Jul 2022 – Oct 2024</span>
+          </div>
+          <div class="cv-role-content">
+            <ul>
+              <li>Optimized ETL pipelines (Airflow, Databricks, Snowflake), cutting storage costs by 50%</li>
+              <li>Consolidated fragmented ETL processes into a single scalable framework</li>
+              <li>Automated recurring workflows (emails, reporting), eliminating hours of manual work weekly</li>
+            </ul>
+          </div>
+        </div>
+        <div class="cv-role">
+          <div class="cv-role-header">
+            <span class="cv-role-title">Python Developer</span>
+            <span class="cv-role-date">Feb 2022 – Jul 2022</span>
+          </div>
+          <div class="cv-role-content">
+            <ul>
+              <li>Developed serverless applications with Chalice, Terraform, and AWS (SNS, SES, DynamoDB)</li>
+              <li>Reverse-engineered undocumented SaaS APIs to unblock client integrations</li>
+              <li>Integrated external partners into the client platform, expanding product capabilities</li>
+            </ul>
+          </div>
+        </div>
+        <div class="cv-role">
+          <div class="cv-role-header">
+            <span class="cv-role-title">JavaScript Fullstack Developer</span>
+            <span class="cv-role-date">Sep 2021 – Feb 2022</span>
+          </div>
+          <div class="cv-role-content">
+            <ul>
+              <li>Built web applications with NodeJS, ReactJS, and MongoDB</li>
+              <li>Adapted client software to meet accessibility standards (WCAG/ADA)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="cv-company">
+        <div class="cv-company-header">
+          <span class="cv-company-name">Develcode</span>
+          <span class="cv-company-date">Jan 2021 – Sep 2021</span>
+        </div>
+        <div class="cv-role">
+          <div class="cv-role-header">
+            <span class="cv-role-title">Technical Lead</span>
+            <span class="cv-role-date">Jul 2021 – Sep 2021</span>
+          </div>
+          <div class="cv-role-content">
+            <ul>
+              <li>Acting as main technical contact for a small integration project using SpringBoot and ReactJS</li>
+              <li>Directed architecture decisions and delivery for a small engineering team</li>
+            </ul>
+          </div>
+        </div>
+        <div class="cv-role">
+          <div class="cv-role-header">
+            <span class="cv-role-title">Full Stack Developer</span>
+            <span class="cv-role-date">Jan 2021 – Jul 2021</span>
+          </div>
+          <div class="cv-role-content">
+            <ul>
+              <li>Built frontend applications with ReactJS and TypeScript; backend services with Java (SpringBoot)</li>
+              <li>Maintained PostgreSQL/MySQL databases and a native Android app</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="cv-company single-role">
+        <div class="cv-company-header">
+          <span class="cv-company-name">Concordia Labs</span>
+          <span class="cv-company-date">Jul 2020 – Present (part-time)</span>
+        </div>
+        <div class="cv-role">
+          <div class="cv-role-header">
+            <span class="cv-role-title">Full Stack Developer</span>
+          </div>
+          <div class="cv-role-content">
+            <ul>
+              <li>Built end-to-end platforms: gym membership system, industrial maintenance system, e-commerce dashboards</li>
+              <li>Owned full architecture (DB schemas, APIs, infrastructure) and led migrations from legacy databases</li>
+              <li>Mentored junior engineers, conducted code reviews, and gathered client requirements</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="cv-company single-role">
+        <div class="cv-company-header">
+          <span class="cv-company-name">Dipsystem</span>
+          <span class="cv-company-date">Mar 2018 – Jan 2021</span>
+        </div>
+        <div class="cv-role">
+          <div class="cv-role-header">
+            <span class="cv-role-title">Full Stack Developer</span>
+          </div>
+          <div class="cv-role-content">
+            <ul>
+              <li>Ported a legacy tracking system into modern architecture, improving performance for large-scale operations</li>
+              <li>Built web apps with Python (Django, Tornado), NodeJS, Angular, MongoDB, and MySQL</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cv-section">
+      <h2 class="cv-section-title">Projects & Community</h2>
+      
+      <div class="cv-project">
+        <div class="cv-project-title"><a href="https://github.com/gabriel-taufer/django-remote-forms">Django Remote Forms</a> <span class="cv-project-url">(github.com/gabriel-taufer/django-remote-forms)</span></div>
+        <div class="cv-project-desc">Forked and extended library to automate UI generation from REST API data—mount forms and pages using only backend changes</div>
+      </div>
+      
+      <div class="cv-project">
+        <div class="cv-project-title"><a href="https://github.com/gabriel-taufer/benflow-bot">Benflow Bot</a> <span class="cv-project-url">(github.com/gabriel-taufer/benflow-bot)</span></div>
+        <div class="cv-project-desc">Built an Airflow-based bot that generated images of random celebrities meeting, as a learning project for workflow orchestration</div>
+      </div>
+      
+      <div class="cv-project">
+        <div class="cv-project-title">GruPy São Marcos & PyCaxias — Speaker</div>
+        <div class="cv-project-desc">Presented talks on Data Engineering with Pandas and RegEx fundamentals at local Python meetups</div>
+      </div>
+    </section>
+
+    <section class="cv-section">
+      <h2 class="cv-section-title">{t("cv.skills")}</h2>
+      <div class="cv-skills-list">
+        <p><strong>Backend:</strong> Python, Django, FastAPI, Flask, Node.js, GraphQL</p>
+        <p><strong>Cloud/Infra:</strong> AWS, Terraform, Docker, CI/CD, GCP</p>
+        <p><strong>Data:</strong> PostgreSQL, Redis, Snowflake, Airflow, Databricks, Redshift</p>
+        <p><strong>Frontend:</strong> React, Next.js, TypeScript, TailwindCSS</p>
+        <p><strong>Testing:</strong> pytest, Selenium, Playwright</p>
+      </div>
+    </section>
+  </div>
+
+  <a href="/" class="back-link">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+    Back
+  </a>
+  
+  <button class="print-btn" onclick="window.print()">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/></svg>
+    {t("cv.print")}
+  </button>
+</body>
+</html>
