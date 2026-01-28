@@ -1,0 +1,49 @@
+---
+import Container from "@components/Container.astro";
+import Link from "@components/Link.astro";
+import LanguagePicker from "@components/LanguagePicker.astro";
+import { SITE } from "@consts";
+import { getLangFromUrl, useTranslations } from "@i18n/ui";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const langPrefix = lang === 'pt' ? '/pt' : '';
+---
+
+<header>
+  <Container>
+    <div class="flex flex-wrap gap-y-2 justify-between items-center">
+      <Link href={lang === 'pt' ? '/pt' : '/'} underline={false}>
+        <div class="font-semibold">
+          {SITE.NAME}
+        </div>
+      </Link>
+      <div class="flex items-center gap-4">
+        <nav class="flex gap-1 flex-wrap">
+          <Link href={`${langPrefix}/work`}>
+            {t('nav.work')}
+          </Link>
+          <span>
+            {`/`}
+          </span>
+          <Link href={`${langPrefix}/blog`}>
+            {t('nav.blog')}
+          </Link>
+          <span>
+            {`/`}
+          </span>
+          <Link href={`${langPrefix}/skills`}>
+            {t('nav.skills')}
+          </Link>
+          <span>
+            {`/`}
+          </span>
+          <Link href={`${langPrefix}/contact`}>
+            {t('nav.contact')}
+          </Link>
+        </nav>
+        <LanguagePicker />
+      </div>
+    </div>
+  </Container>
+</header>

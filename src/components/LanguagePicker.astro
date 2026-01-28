@@ -1,0 +1,35 @@
+---
+const currentPath = Astro.url.pathname;
+const currentLang = currentPath.startsWith('/pt') ? 'pt' : 'en';
+
+function getLocalizedPath(locale: string) {
+  if (locale === 'en') {
+    // Remove /pt prefix if exists
+    return currentPath.replace(/^\/pt/, '') || '/';
+  } else {
+    // Add /pt prefix
+    if (currentPath.startsWith('/pt')) {
+      return currentPath;
+    }
+    return `/pt${currentPath === '/' ? '' : currentPath}`;
+  }
+}
+
+const targetLang = currentLang === 'en' ? 'pt' : 'en';
+const flagSrc = currentLang === 'en' ? '/brazil_flag.png' : '/usa_flag.png';
+const altText = currentLang === 'en' ? 'Switch to Portuguese' : 'Switch to English';
+---
+
+<a
+  href={getLocalizedPath(targetLang)}
+  aria-label={altText}
+  class="hover:opacity-80 transition-opacity"
+>
+  <img
+    src={flagSrc}
+    alt={altText}
+    width="24"
+    height="24"
+    class="rounded"
+  />
+</a>

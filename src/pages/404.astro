@@ -1,0 +1,33 @@
+---
+import PageLayout from "@layouts/PageLayout.astro";
+import Container from "@components/Container.astro";
+import Link from "@components/Link.astro";
+import { getLangFromUrl, useTranslations } from "@i18n/ui";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<PageLayout title="404" description="Page not found">
+  <Container>
+    <div class="flex flex-col items-center justify-center min-h-[50vh] space-y-6">
+      <div class="text-center space-y-4">
+        <h1 class="text-6xl font-bold text-black dark:text-white">404</h1>
+        <h2 class="text-2xl font-semibold text-black dark:text-white">
+          {lang === "pt" ? "Página não encontrada" : "Page not found"}
+        </h2>
+        <p class="opacity-75">
+          {lang === "pt"
+            ? "A página que você está procurando não existe ou foi movida."
+            : "The page you're looking for doesn't exist or has been moved."}
+        </p>
+      </div>
+
+      <div class="flex gap-4">
+        <Link href={lang === "pt" ? "/pt" : "/"}>
+          {lang === "pt" ? "← Voltar para início" : "← Back to home"}
+        </Link>
+      </div>
+    </div>
+  </Container>
+</PageLayout>

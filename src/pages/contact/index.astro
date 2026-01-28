@@ -1,0 +1,56 @@
+---
+import PageLayout from "@layouts/PageLayout.astro";
+import Container from "@components/Container.astro";
+import Link from "@components/Link.astro";
+import { SITE, SOCIALS } from "@consts";
+import { getLangFromUrl, useTranslations } from "@i18n/ui";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<PageLayout title={t('contact.title')} description="Get in touch with me">
+  <Container>
+    <div class="space-y-10">
+      <div class="flex flex-col items-center gap-6">
+        <img
+          src="/profile_pic_small.jpeg"
+          alt="Gabriel Taufer"
+          class="animate w-32 h-32 rounded-full object-cover"
+        />
+        <div class="animate font-semibold text-black dark:text-white text-center text-2xl">
+          {t('contact.title')}
+        </div>
+      </div>
+
+      <section class="animate space-y-6 text-center">
+        <h3 class="text-lg font-semibold text-black dark:text-white">
+          {t('contact.subtitle')}
+        </h3>
+
+        <article class="space-y-4">
+          <p>
+            {t('home.connect.text')}
+          </p>
+        </article>
+
+        <div class="flex flex-col items-center gap-4 pt-4">
+          <ul class="flex flex-wrap justify-center gap-4">
+            {SOCIALS.map(SOCIAL => (
+              <li>
+                <Link href={SOCIAL.HREF} external aria-label={`${SITE.NAME} on ${SOCIAL.NAME}`}>
+                  <span class="capitalize font-semibold">{SOCIAL.NAME}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <div>
+            <Link href={`mailto:${SITE.EMAIL}`} aria-label={`Email ${SITE.NAME}`}>
+              <span class="font-semibold">{SITE.EMAIL}</span>
+            </Link>
+          </div>
+        </div>
+      </section>
+    </div>
+  </Container>
+</PageLayout>

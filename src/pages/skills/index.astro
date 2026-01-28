@@ -1,0 +1,98 @@
+---
+import PageLayout from "@layouts/PageLayout.astro";
+import Container from "@components/Container.astro";
+import { getLangFromUrl, useTranslations } from "@i18n/ui";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const skills = {
+  "Languages & Others": {
+    "Python": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/python/python-original.svg",
+    "JavaScript": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/javascript/javascript-original.svg",
+    "TypeScript": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/typescript/typescript-original.svg",
+    "NodeJS": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/nodejs/nodejs-original-wordmark.svg",
+    "HTML5": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/html5/html5-original.svg",
+    "CSS3": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/css3/css3-original.svg",
+    "SASS": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/sass/sass-original.svg",
+    "TailWind": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/tailwindcss/tailwindcss-original.svg",
+  },
+  "Frameworks & Libs": {
+    "Django": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/django/django-plain.svg",
+    "Django Rest": "http://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/djangorest/djangorest-original.svg",
+    "Apache Airflow": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/apacheairflow/apacheairflow-original.svg",
+    "FastAPI": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/fastapi/fastapi-original.svg",
+    "Flask": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/flask/flask-original.svg",
+    "SQLAlchemy": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/sqlalchemy/sqlalchemy-original.svg",
+    "ReactJS": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/react/react-original.svg",
+    "NextJS": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/nextjs/nextjs-original.svg",
+    "Pandas": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/pandas/pandas-original.svg",
+    "Plotly": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/plotly/plotly-original.svg",
+    "Selenium": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/selenium/selenium-original.svg",
+  },
+  "Databases": {
+    "PostgreSQL": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/postgresql/postgresql-original.svg",
+    "MySQL": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/mysql/mysql-original.svg",
+    "SQLite": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/sqlite/sqlite-original.svg",
+    "DynamoDB": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/dynamodb/dynamodb-original.svg",
+    "Redis": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/redis/redis-original.svg",
+    "RabbitMQ": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/rabbitmq/rabbitmq-original.svg",
+    "Redshift": "/tech_icons/aws_redshift.svg",
+    "MongoDB": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/mongodb/mongodb-original.svg",
+  },
+  "Other technologies": {
+    "Docker": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/docker/docker-original.svg",
+    "Terraform": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/terraform/terraform-original.svg",
+    "AWS": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/amazonwebservices/amazonwebservices-original-wordmark.svg",
+    "AWS Lambda": "/tech_icons/aws_lambda.svg",
+    "AWS S3": "/tech_icons/aws_s3.svg",
+    "AWS EC2": "/tech_icons/aws_ec2.svg",
+    "DigitalOcean": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/digitalocean/digitalocean-original.svg",
+    "GCP": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/googlecloud/googlecloud-original.svg",
+    "Git": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/git/git-original.svg",
+    "GitHub": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/github/github-original.svg",
+    "GitHub Actions": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/githubactions/githubactions-plain.svg",
+    "CircleCI": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/circleci/circleci-plain.svg",
+    "GraphQL": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/graphql/graphql-plain.svg",
+    "Snowflake": "/tech_icons/snowflake.svg",
+    "CloudFlare": "https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/cloudflare/cloudflare-original.svg",
+  }
+};
+---
+
+<PageLayout title={t('skills.title')} description="Technologies and tools I'm experienced with">
+  <Container>
+    <div class="space-y-10">
+      <div class="animate font-semibold text-black dark:text-white">
+        {t('skills.title')}
+      </div>
+
+      <p class="animate text-center opacity-75">
+        {t('skills.intro')}
+      </p>
+
+      <div class="space-y-12">
+        {Object.entries(skills).map(([category, techs]) => (
+          <div class="animate space-y-4">
+            <h3 class="text-lg font-semibold text-black dark:text-white text-center">
+              {category}
+            </h3>
+            <div class="flex flex-wrap justify-center gap-6">
+              {Object.entries(techs).map(([name, src]) => (
+                <div class="flex flex-col items-center gap-2">
+                  <img
+                    src={src}
+                    alt={name}
+                    class="w-16 h-16 object-contain"
+                    loading="lazy"
+                  />
+                  <span class="text-xs text-center opacity-75">{name}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </Container>
+</PageLayout>
