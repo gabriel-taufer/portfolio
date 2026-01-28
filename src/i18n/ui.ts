@@ -58,7 +58,7 @@ export const ui = {
     'skills.intro': 'Tecnologias que uso regularmente',
 
     'contact.title': 'Vamos Conversar',
-    'contact.subtitle': 'Me encontre no',
+    'contact.subtitle': 'Me encontre em',
   },
 } as const;
 

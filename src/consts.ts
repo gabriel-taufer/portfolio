@@ -35,7 +35,7 @@ export const SOCIALS: Socials = [
   },
   {
     NAME: "linkedin",
-    HREF: "https://www.linkedin.com/in/gabriel-taufer-91ab561a0/",
+    HREF: "https://www.linkedin.com/in/gabriel-taufer/",
   },
   {
     NAME: "instagram",
