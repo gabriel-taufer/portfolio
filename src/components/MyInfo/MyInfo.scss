@@ -1,0 +1,105 @@
+@import "../../Base.scss";
+
+
+
+#my-info {
+  .my-info-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .my-info {
+      display: inline;
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5 {
+        margin: 0;
+        padding: 0;
+        display: flex;
+      }
+    }
+
+    img {
+      max-height: 256px;
+      max-width: 256px;
+      object-fit: cover;
+    }
+
+
+    @media only screen and (max-width: 768px) {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      .my-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        margin-top: 50px;
+      }
+
+
+      img {
+        // display: none;
+        max-height: 280px;
+        max-width: 280px;
+      }
+
+      .about-me-text {
+        display: inline;
+
+        h1,
+        h3 {
+          text-align: center;
+        }
+      }
+    }
+
+    .social-media-icons {
+      margin: 16px;
+    }
+
+    a.social-media-icon,
+    a.social-media-icon:visited,
+    a.my-website-link {
+      text-decoration: none;
+      color: $font-color;
+
+      margin: 10px 0;
+      transition: all 300ms;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+
+      &:hover {
+        cursor: pointer;
+        color: lightgray;
+        transition: all 300ms;
+
+        &.instagram-icon {
+          color: #C13584;
+        }
+
+        &.linkedin-icon {
+          color: #0a66c2;
+        }
+
+        &.gmail-icon {
+          color: #C71610;
+        }
+
+        &.my-website-link {
+          color: lightblue;
+        }
+
+      }
+    }
+  }
+}
