@@ -70,8 +70,8 @@ const { title, description, image = "/tau-optimized.png" } = Astro.props;
 
 <ClientRouter  />
 
-<!-- RSS Link -->
-<link rel="alternate" type="application/rss+xml" title={SITE.NAME} href={new URL("rss.xml", Astro.site)} />
+<!-- RSS Link - written posts live at poorthoughts.com -->
+<link rel="alternate" type="application/rss+xml" title={`${SITE.NAME} - Poor Thoughts`} href="https://poorthoughts.com/rss.xml" />
 
 <script>
   import type { TransitionBeforeSwapEvent } from "astro:transitions/client";

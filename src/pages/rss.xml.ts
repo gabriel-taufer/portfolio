@@ -1,24 +1,21 @@
 import rss from "@astrojs/rss";
 import { getCollection } from "astro:content";
-import { HOME } from "@consts";
+import { SITE, PROJECTS } from "@consts";
 
 type Context = {
   site: string
 }
 
+// Feed of projects only. Written posts live at poorthoughts.com, which has its
+// own feed - linked as the RSS alternate in Head.astro.
 export async function GET(context: Context) {
-  const blog = (await getCollection("blog"))
-  .filter(post => !post.data.draft);
-
-  const projects = (await getCollection("projects"))
-    .filter(project => !project.data.draft);
-
-  const items = [...blog, ...projects]
+  const items = (await getCollection("projects"))
+    .filter(project => !project.data.draft)
     .sort((a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf());
 
   return rss({
-    title: HOME.TITLE,
-    description: HOME.DESCRIPTION,
+    title: `${PROJECTS.TITLE} | ${SITE.NAME}`,
+    description: PROJECTS.DESCRIPTION,
     site: context.site,
     items: items.map((item) => ({
       title: item.data.title,

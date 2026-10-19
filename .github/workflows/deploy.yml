@@ -3,6 +3,10 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [ main ]
+  # The blog list is pulled from poorthoughts.com/rss.xml at build time, so
+  # rebuild daily to pick up new posts without touching this repo.
+  schedule:
+    - cron: '0 6 * * *'
   workflow_dispatch:
 
 permissions:
