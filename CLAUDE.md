@@ -15,7 +15,7 @@ Path alias: `@*` → `./src/*` (so `@consts`, `@types`). Analytics is a Umami sc
 ## Build and verify
 
 `npm run build` is `astro check && astro build`, so **type errors fail the build**. On `main` it
-ends at 0 errors / 0 warnings / 3 hints and 14 pages. `astro check` alone is a quick pass.
+ends at 0 errors / 0 warnings / 2 hints and 14 pages. `astro check` alone is a quick pass.
 
 Two warnings on `main` are expected: `src/content/blog/` and `src/content/projects/` hold only
 `.gitkeep`, so `rss.xml.ts` logs "collection does not exist or is empty" for both. An
