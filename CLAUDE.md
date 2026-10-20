@@ -87,6 +87,9 @@ asks for it by name.
   place before it was split. Leave it alone.
 - On `origin` only: `gh-pages` (the Pages artifact, machine-written) and `revamp` (old).
 
+Everything marked local only is on Gabriel's machine, not on `origin`: a cloud session or fresh
+clone cannot check those out. `git branch -vv` and `git worktree list` show what is present.
+
 ## Known defects, parked on purpose
 
 Do not file these as discoveries, and do not fix them without asking.
